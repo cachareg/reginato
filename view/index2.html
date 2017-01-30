@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>SimpliQ - Flat & Responsive Bootstrap Admin Template</title>
+	<meta name="description" content="SimpliQ - Flat & Responsive Bootstrap Admin Template.">
+	<meta name="author" content="Łukasz Holeczek">
+	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	<!-- end: Meta -->
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- end: Mobile Specific -->
+	
+	<!-- start: CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="css/style.min.css" rel="stylesheet">
+	<link href="css/style-responsive.min.css" rel="stylesheet">
+	<link href="css/retina.css" rel="stylesheet">
+	<!-- end: CSS -->
+	
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<link id="ie-style" href="css/ie.css" rel="stylesheet">
+	<![endif]-->
+	
+	<!--[if IE 9]>
+		<link id="ie9style" href="css/ie9.css" rel="stylesheet">
+	<![endif]-->
+	
+	<!-- start: Favicon and Touch Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+	<link rel="shortcut icon" href="ico/favicon.png">
+	<!-- end: Favicon and Touch Icons -->	
+		
+</head>
+
+<body>
+			
+	<div class="navbar">
+			<div class="row-fluid">	
+				<div class="box span12">
+					<div class="box-header">
+						<h2><i class="icon-hand-up"></i>Painel de Controle</h2>
+					</div>
+					<div class="box-content">
+						
+						<a href="javascript:showhide('cadastros', 'cadastro_produto.html')" class="quick-button span2">
+							<i class="icon-barcode"></i>
+							<p>Produto</p>
+							
+						</a>
+						<a class="quick-button span2">
+							<i class="icon-hospital"></i>
+							<p>Fábrica</p>
+						</a>
+						<a class="quick-button span2">
+							<i class="icon-reorder"></i>
+							<p>Categoria</p>
+						</a>
+						<a class="quick-button span2">
+							<i class="icon-tasks"></i>
+							<p>Catacterística</p>
+						</a>
+						
+						<div class="clearfix"></div>
+
+					</div>	
+
+				</div><!--/span-->
+				
+			</div><!--/row-->
+		<div>
+			<object  id="cadastros" height="800" width="1400" type="text/html" ></object>
+		</div>
+	</div>
+	
+</body>
+	<script>
+		function showhide(id, url) {
+       		var x=document.getElementById('cadastros');
+       			
+       		if(url!= x.getAttribute('data')){
+	       		var e = document.getElementById(id);
+	       		e.setAttribute('data', url);
+	       	}
+
+     	}
+	</script>
+</html>

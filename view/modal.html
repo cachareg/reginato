@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- start: Meta -->
+  <meta charset="utf-8">
+  <title>SimpliQ - Flat & Responsive Bootstrap Admin Template</title>
+  <meta name="description" content="SimpliQ - Flat & Responsive Bootstrap Admin Template.">
+  <meta name="author" content="Łukasz Holeczek">
+  <meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <!-- end: Meta -->
+  
+  <!-- start: Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- end: Mobile Specific -->
+  
+  <!-- start: CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="css/style.min.css" rel="stylesheet">
+  <link href="css/style-responsive.min.css" rel="stylesheet">
+  <link href="css/retina.css" rel="stylesheet">
+  <!-- end: CSS -->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <script src="js/jquery.modal.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/jquery.modal.css" type="text/css" media="screen" />
+
+  <script src="highlight/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8"> hljs.initHighlightingOnLoad(); </script>
+  <link rel="stylesheet" href="highlight/github.css" type="text/css" media="screen" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+  <style type="text/css" media="screen">
+    small { color: #aaa; }
+    h1,h2,h3,h4 { color: #444; font-weight: 700; font-size: 1.6em; letter-spacing: -1px; }
+    a { color: #0086B3; font-weight: 700; }
+    a:hover { color: #000; }
+    hr { height: 10px; background: #eee; border: none; }
+    table {width:100%;border-collapse:collapse;}
+
+    body > .modal {
+      display: none;
+    }
+
+    /* Example 2 (login form) */
+    .login_form.modal {
+      border-radius: 0;
+      line-height: 18px;
+      padding: 0;
+      font-family: "Lucida Grande", Verdana, sans-serif;
+    }
+
+    .login_form h3 {
+      margin: 0;
+      padding: 10px;
+      color: #fff;
+      font-size: 14px;
+      background: -moz-linear-gradient(top, #2e5764, #1e3d47);
+      background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #1e3d47),color-stop(1, #2e5764));
+    }
+
+    .login_form.modal p { padding: 20px 30px; border-bottom: 1px solid #ddd; margin: 0;
+      background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #eee),color-stop(1, #fff));
+      overflow: hidden;
+    }
+    .login_form.modal p:last-child { border: none; }
+    .login_form.modal p label { float: left; font-weight: bold; color: #333; font-size: 13px; width: 110px; line-height: 22px; }
+    .login_form.modal p input[type="text"],
+    .login_form.modal p input[type="password"] {
+      font: normal 12px/18px "Lucida Grande", Verdana;
+      padding: 3px;
+      border: 1px solid #ddd;
+      width: 200px;
+    }
+
+
+    .part {
+      display: none;
+    }
+
+  </style>
+  <title>jQuery Modal</title>
+</head>
+<body>
+
+
+<p>
+  This <a href="#ex5">example</a>
+
+</p>
+<div id="ex5" class="modal">
+  <p>If you do this, be sure to provide the user with an alternate method of <a href="#" rel="modal:close">closing the window.</a></p>
+</div>
+
+<hr />
+
+
+<style type="text/css">
+  .modal a.close-modal[class*="icon-"] {
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    background: #900;
+    border: 2px solid #fff;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    -o-border-radius: 26px;
+    -ms-border-radius: 26px;
+    -moz-box-shadow:    1px 1px 5px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    box-shadow:         1px 1px 5px rgba(0,0,0,0.5);
+  }
+</style>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+
+    function log_modal_event(event, modal) {
+      if(typeof console != 'undefined' && console.log) console.log("[event] " + event.type);
+    };
+
+    $(document).on($.modal.BEFORE_BLOCK, log_modal_event);
+    $(document).on($.modal.BLOCK, log_modal_event);
+    $(document).on($.modal.BEFORE_OPEN, log_modal_event);
+    $(document).on($.modal.OPEN, log_modal_event);
+    $(document).on($.modal.BEFORE_CLOSE, log_modal_event);
+    $(document).on($.modal.CLOSE, log_modal_event);
+    $(document).on($.modal.AFTER_CLOSE, log_modal_event);
+    $(document).on($.modal.AJAX_SEND, log_modal_event);
+    $(document).on($.modal.AJAX_SUCCESS, log_modal_event);
+    $(document).on($.modal.AJAX_COMPLETE, log_modal_event);
+
+    $('#more').click(function() {
+      $(this).parent().after($(this).parent().next().clone());
+      return false;
+    });
+
+    $('#manual-ajax').click(function(event) {
+      event.preventDefault();
+      $.get(this.href, function(html) {
+        $(html).appendTo('body').modal();
+      });
+    });
+
+    $('a[href="#ex5"]').click(function(event) {
+      event.preventDefault();
+      $(this).modal({
+        escapeClose: false,
+        clickClose: false,
+        showClose: false
+      });
+    });
+
+  });
+</script>
+
+<script src="js/jquery-migrate-1.2.1.min.js"></script>  
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script> 
+    <script src="js/jquery.ui.touch-punch.js"></script> 
+    <script src="js/modernizr.js"></script> 
+    <script src="js/bootstrap.min.js"></script> 
+    <script src="js/jquery.cookie.js"></script> 
+    <script src='js/fullcalendar.min.js'></script>  
+    <script src='js/jquery.dataTables.min.js'></script>
+    <script src="js/excanvas.js"></script>
+  <script src="js/jquery.flot.js"></script>
+  <script src="js/jquery.flot.pie.js"></script>
+  <script src="js/jquery.flot.stack.js"></script>
+  <script src="js/jquery.flot.resize.min.js"></script>
+  <script src="js/jquery.flot.time.js"></script>
+    
+    <script src="js/jquery.chosen.min.js"></script> 
+    <script src="js/jquery.uniform.min.js"></script>    
+    <script src="js/jquery.cleditor.min.js"></script> 
+    <script src="js/jquery.noty.js"></script> 
+    <script src="js/jquery.elfinder.min.js"></script> 
+    <script src="js/jquery.raty.min.js"></script> 
+    <script src="js/jquery.iphone.toggle.js"></script>  
+    <script src="js/jquery.uploadify-3.1.min.js"></script>  
+    <script src="js/jquery.gritter.min.js"></script>  
+    <script src="js/jquery.imagesloaded.js"></script> 
+    <script src="js/jquery.masonry.min.js"></script>  
+    <script src="js/jquery.knob.modified.js"></script>  
+    <script src="js/jquery.sparkline.min.js"></script>  
+    <script src="js/counter.min.js"></script> 
+    <script src="js/raphael.2.1.0.min.js"></script>
+  <script src="js/justgage.1.0.1.min.js"></script>  
+    <script src="js/jquery.autosize.min.js"></script> 
+    <script src="js/retina.js"></script>
+    <script src="js/jquery.placeholder.min.js"></script>
+    <script src="js/wizard.min.js"></script>
+    <script src="js/core.min.js"></script>  
+    <script src="js/charts.min.js"></script>  
+    <script src="js/custom.min.js"></script>
+
+
+</body>
+</html>
