@@ -48,7 +48,14 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
+
+
 	$( function() {
+
+	$( document ).ready(function() {
+
+		localStorage.clear();
+	});
 	$( "#dialog" ).dialog();
 	 } );
 	 </script>
@@ -80,13 +87,15 @@
 								</div>		
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Adicionar Fotos </label>
-									<div class="controls">
+									<div class="controls" >
 										<!--<input type="file" onchange="savePics()" id="arquivos" name="files" multiple="" /> -->
 
 											<input type="file" id="arquivos" onchange="loadname(this,'previewimg')" name="files" webkitdirectory multiple />
 											<ul id="listing"></ul>
-											<div class="fotos">
-											</div>
+											<table class="fotos" width="600" style="display:inline">
+
+											</table>
+											<div id="trashFotos"  style="display:none"><a class="btn btn-danger" id="exclude" height="40" width="40"><i class="icon-trash " height="40" width="40"></i> </a> </div>
 									</div>
 									
 								</div>	
@@ -206,75 +215,78 @@
 	</div>
 
 	<script>
-
+		var index=0;
+		var list = new Array();;
 		function loadname(img){ 
-			alert("fgsdfg"); 
+			//console.log(this);
 			var isIE = (navigator.appName=="Microsoft Internet Explorer");  
 			//var path = img.value;  
 			//var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase(); 
 			//console.log(path);
 			//console.log(ext); 
-			for($i=0; $i<img.files.length; $i++){
-				if(img.files[$i]){
+			if($(".fotos tr").length==0){
+				$('.fotos').append('<tr> </tr>');
+			}
+			//var ext = img.files.substring(path.lastIndexOf('.') + 1).toLowerCase(); 
+			files= img.files;
+			for(var i=0; i<img.files.length; i++){
+				if(img.files[i]){
+					var o = new Object();
 					var reader = new FileReader();  
 		            reader.onload = function (e) {  
-		                $('.fotos').append('<img src="'+e.target.result +'"  class="img" height="40" width="40" alt="" />');
+		            	
+		                $('.fotos tr').append('<td> <img src="'+e.target.result +'" name='+index+' class="img" height="40" width="40" alt="" /> </td> ');
+		               	index++;
+		                //list.splice(list.lenght, 0,img.files[i]);
 		            }
-			        reader.readAsDataURL(img.files[$i]); 
-				}
+		         	
+			        reader.readAsDataURL(img.files[i]);
+			        o[index+i]= img.files[i];
+			        list.push(o);
+			        //console.log(list);			
+			    }
 			}
-			//<img src="about:blank" height:"10" width:"10"  name="previewimg2" id="previewimg" alt="" />
-			/* if(ext == "gif" || ext == "jpeg" || ext == "jpg" ||  ext == "png" )  
-			 {       
-			   
-			       if (img.files[0]) 
-			        {  
-			            var reader = new FileReader();  
-			            reader.onload = function (e) {  
-			                $('#'+ previewName).attr('src', e.target.result);  
-			            }
-			            reader.readAsDataURL(img.files[0]);  
-			        }  
-			        if (img.files[1]) 
-			        {  
-			            var reader = new FileReader();  
-			            reader.onload = function (e) {  
-			                $('#'+ previewName2).attr('src', e.target.result);  
-			            }
-			            reader.readAsDataURL(img.files[1]);  
-			        } 
-			    }  
-
-			 }else{  
-			   
-			 }   */
+			//$("#arquivos").val('');
+			$('#exclude').show();
+			$('#trashFotos').css("display", "inline");
+			$('#trashFotos').css("vertical-align", "top");
+			
 		}  
 
-		// function savePics(){
-		// 	var names = [];
-		// 	console.log($("input[name=files]").get(0).files.length);
-		//     for (var i = 0; i < $("input[name=files]").get(0).files.length; ++i) {
-		//     	localStorage.setItem("imgData"+i, $("input[name=files]").get(0).files[i]);     
-		//     }
-		// 	console.log($("input[name=files]").get(0).files[0].webkitRelativePath);
-		// 	//$("figura").src("");			
-		// }
+		$("#exclude").click(function(event){
+				var qtd=$(".fotos").find("tr:first td").length;
+				$(".fotos tr").each(function () {
+					var count =0; 
+				    $('td', this).each(function () {
+				       if($(this).children().hasClass("selecionada")){
+				       	count++;
+				       	var apagar =[];
+				       	for(var i in list){
+				       		//console.log(i);
+				       		for(var j in list[i]){
+				       			//console.log($(this).children().attr("name"));
+				       			//console.log(j);
+				       			if(j==$(this).children().attr("name")){
+				       				list.splice(i,1);
+				       				console.log(list);
+				       			}
 
-		// document.getElementById("arquivos").addEventListener("change", function(event) {
-		//   let output = document.getElementById("listing");
-		//   let files = event.target.files;
+				       			//console.log(list);
+				       		}
+				       	}
+				       	//list.splice($(this).children().attr("name") ,1);
+				       	$(this).remove();
+				       }
+				       //console.log(list);
+				       if(count==qtd){
+				       		$("#exclude").hide();
+				       		$(".fotos tr").remove();
+				       }
+				     })
 
-		//   for (let i=0; i<1; i++) {
-		//     let item = document.createElement("li");
-		//     item.innerHTML = files[i].webkitRelativePath;
-		//     output.appendChild(item);
-		//     console.log(files[i]);
-		//     //$("#figura").attr("src",files[i].webkitRelativePath);
-		//   };
-		// }, false);
-
-
-
+				})
+		});
+		
 		$("#salvar").click(function(event){
 			alert($('#tabela_categorias tr').length);
 			if($("nome").text=="" || $("pasta").text=="" || $('#tabela_categorias tr').length==1 || $('#tabela_caracteristicas tr').length==1){
