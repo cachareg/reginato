@@ -216,8 +216,12 @@
 
 	<script>
 		var index=0;
-		var list = new Array();;
+		var list = new Array();
+		var ordem= [];
+		var j=0;
+		var sem=1;
 		function loadname(img){ 
+
 			//console.log(this);
 			var isIE = (navigator.appName=="Microsoft Internet Explorer");  
 			//var path = img.value;  
@@ -227,26 +231,37 @@
 			if($(".fotos tr").length==0){
 				$('.fotos').append('<tr> </tr>');
 			}
-			//var ext = img.files.substring(path.lastIndexOf('.') + 1).toLowerCase(); 
+			
 			files= img.files;
 			for(var i=0; i<img.files.length; i++){
+				
 				if(img.files[i]){
-					var o = new Object();
-					var reader = new FileReader();  
-		            reader.onload = function (e) {  
-		            	
-		                $('.fotos tr').append('<td> <img src="'+e.target.result +'" name='+index+' class="img" height="40" width="40" alt="" /> </td> ');
-		               	index++;
-		                //list.splice(list.lenght, 0,img.files[i]);
-		            }
-		         	
-			        reader.readAsDataURL(img.files[i]);
-			        o[index+i]= img.files[i];
-			        list.push(o);
+					//var ext = img.files[i].value.substring(path.lastIndexOf('.') + 1).toLowerCase();
+					var ext= (img.files[i].webkitRelativePath.substring(img.files[i].webkitRelativePath.lastIndexOf('.') + 1).toLowerCase()); 
+					if(ext == "jpg" || ext == "png"){
+						sem=0;
+						var o = new Object();
+						var reader = new FileReader();  
+						
+						j++;
+						//index++;
+			            reader.onload = function(teste) { return function (e) {  
+			            	//console.log(e);
+				            	$('.fotos tr').append('<td> <img src="'+e.target.result+'" name="'+teste.name+'"class="img" height="40" width="40" alt="" /> </td> ');
+				               	ordem.push(teste);
+				              	
+				            };
+			        	}(img.files[i]);
+			         	reader.readAsDataURL(img.files[i]);
+				        
+				        
+				        //list.push(img.files[i]);
+				    }
 			        //console.log(list);			
 			    }
 			}
 			//$("#arquivos").val('');
+					
 			$('#exclude').show();
 			$('#trashFotos').css("display", "inline");
 			$('#trashFotos').css("vertical-align", "top");
@@ -259,22 +274,17 @@
 					var count =0; 
 				    $('td', this).each(function () {
 				       if($(this).children().hasClass("selecionada")){
-				       	count++;
-				       	var apagar =[];
-				       	for(var i in list){
-				       		//console.log(i);
-				       		for(var j in list[i]){
-				       			//console.log($(this).children().attr("name"));
-				       			//console.log(j);
-				       			if(j==$(this).children().attr("name")){
-				       				list.splice(i,1);
-				       				console.log(list);
-				       			}
-
-				       			//console.log(list);
+				       	
+				       	for(i in ordem){
+				       		//console.log()
+				       		if(ordem[i].name==$(this).children().attr("name")){
+				       			ordem.splice(i, 1);
 				       		}
 				       	}
+
+
 				       	//list.splice($(this).children().attr("name") ,1);
+				       	console.log(ordem);
 				       	$(this).remove();
 				       }
 				       //console.log(list);
