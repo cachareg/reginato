@@ -1,0 +1,99 @@
+﻿html, body{
+	height: 100%;
+}
+
+.page-painel{
+	height: 100%;
+	width: 100%;
+	background-image: url('../images/Logo_MenuCongressista.png');
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	background-size: contain;
+	color: transparent;
+	display: table;
+}
+
+.valign{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.painel{
+	background-color: #0f5172;
+	position: relative;
+	padding: 30px;
+}
+.pessoas{
+	padding: 0;
+	position: relative;
+	bottom: -15px;
+}
+
+ul.nav-tabs{
+	margin-left: 0;
+	border: 0;
+	text-align: center;
+}
+
+ul.nav-tabs li{
+	border-radius: 50%;
+	border: solid 5px #f40707;
+	background-color: white;
+	display: inline-block;
+	float: none;
+	margin: 0 15px;
+}
+ul.nav-tabs li:after{
+	position: absolute;
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    font-family: 'Dosis';
+    font-size: 16px;
+	display: none;
+}
+ul.nav-tabs li.active:after{
+	display: block;
+}
+ul.nav-tabs li:first-child{
+	margin-left: 0 !important;
+}
+ul.nav-tabs li:last-child{
+	margin-right: 0 !important;
+}
+ul.nav-tabs li.active a{
+	background-color: transparent !important;
+}
+ul.nav-tabs a{
+	border: 0 !important;
+}
+
+ul.nav-tabs a:hover, ul.nav-tabs a:focus, ul.nav-tabs a:active{
+	background: transparent;
+}
+
+ul.nav-tabs a img{
+	width: 50px;
+	opacity: 0.3;
+}
+
+ul.nav-tabs li.active a img{
+	opacity: 1;
+}
+
+.perfil-tab:after{
+	content: "PERFIL";
+}
+.manual-tab:after{
+	content: "MANUAL";
+}
+.programacao-tab:after{
+	content: "PROGRAMAÇÃO";
+}
+.certificado-tab:after{
+	content: "CERTIFICADO";
+}
+.sac-tab:after{
+	content: "SAC";
+}

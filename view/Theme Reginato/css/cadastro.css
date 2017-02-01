@@ -1,0 +1,150 @@
+html, body {
+            Height: 100%;
+        }
+
+.FontDosis {
+            font-family: 'Dosis', sans-serif;
+            font-size: 25pt;
+            color: white;
+        }
+        .FontDosis10 {
+            font-family: 'Dosis', sans-serif;
+            font-size: 11pt;
+            color: white;
+        }
+		.valign{
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+        .Login_Logo {
+            position: relative;
+			margin: 0 auto;
+        }
+        .Gradiente {
+            height: 100%;
+            width: 100%;
+			display: table;
+            margin: 0px;
+            background: -moz-linear-gradient(50% 0% -90deg,rgba(192, 33, 55, 1) 0%,rgba(197, 51, 70, 1) 2.62%,rgba(205, 78, 90, 1) 7.26%,rgba(211, 97, 105, 1) 12.01%,rgba(214, 108, 114, 1) 16.88%,rgba(215, 112, 117, 1) 22.07%,rgba(114, 107, 172, 1) 52.74%,rgba(105, 106, 177, 1) 66.85%,rgba(54, 94, 145, 1) 81.3%,rgba(38, 35, 107, 1) 100%);
+            background: -webkit-linear-gradient(-90deg, rgba(192, 33, 55, 1) 0%, rgba(197, 51, 70, 1) 2.62%, rgba(205, 78, 90, 1) 7.26%, rgba(211, 97, 105, 1) 12.01%, rgba(214, 108, 114, 1) 16.88%, rgba(215, 112, 117, 1) 22.07%, rgba(114, 107, 172, 1) 52.74%, rgba(105, 106, 177, 1) 66.85%, rgba(54, 94, 145, 1) 81.3%, rgba(38, 35, 107, 1) 100%);
+            background: -webkit-gradient(linear,50% 0%,50% 100%,color-stop(0,rgba(192, 33, 55, 1) ),color-stop(0.0262,rgba(197, 51, 70, 1) ),color-stop(0.0726,rgba(205, 78, 90, 1) ),color-stop(0.1201,rgba(211, 97, 105, 1) ),color-stop(0.1688,rgba(214, 108, 114, 1) ),color-stop(0.2207,rgba(215, 112, 117, 1) ),color-stop(0.5274,rgba(114, 107, 172, 1) ),color-stop(0.6685,rgba(105, 106, 177, 1) ),color-stop(0.813,rgba(54, 94, 145, 1) ),color-stop(1,rgba(38, 35, 107, 1) ));
+            background: -o-linear-gradient(-90deg, rgba(192, 33, 55, 1) 0%, rgba(197, 51, 70, 1) 2.62%, rgba(205, 78, 90, 1) 7.26%, rgba(211, 97, 105, 1) 12.01%, rgba(214, 108, 114, 1) 16.88%, rgba(215, 112, 117, 1) 22.07%, rgba(114, 107, 172, 1) 52.74%, rgba(105, 106, 177, 1) 66.85%, rgba(54, 94, 145, 1) 81.3%, rgba(38, 35, 107, 1) 100%);
+            background: -ms-linear-gradient(-90deg, rgba(192, 33, 55, 1) 0%, rgba(197, 51, 70, 1) 2.62%, rgba(205, 78, 90, 1) 7.26%, rgba(211, 97, 105, 1) 12.01%, rgba(214, 108, 114, 1) 16.88%, rgba(215, 112, 117, 1) 22.07%, rgba(114, 107, 172, 1) 52.74%, rgba(105, 106, 177, 1) 66.85%, rgba(54, 94, 145, 1) 81.3%, rgba(38, 35, 107, 1) 100%);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#C02137', endColorstr='#26236B' ,GradientType=0)";
+            background: linear-gradient(180deg, rgba(192, 33, 55, 1) 0%, rgba(197, 51, 70, 1) 2.62%, rgba(205, 78, 90, 1) 7.26%, rgba(211, 97, 105, 1) 12.01%, rgba(214, 108, 114, 1) 16.88%, rgba(215, 112, 117, 1) 22.07%, rgba(114, 107, 172, 1) 52.74%, rgba(105, 106, 177, 1) 66.85%, rgba(54, 94, 145, 1) 81.3%, rgba(38, 35, 107, 1) 100%);
+            opacity: 0.75;
+            filter: alpha(opacity=75) progid:DXImageTransform.Microsoft.Alpha(opacity=75) progid:DXImageTransform.Microsoft.gradient(startColorstr='#C02137',endColorstr='#26236B', GradientType=0);
+        }
+        .Background {
+            height: 100%;
+            opacity: 1;
+            background-image: url("../images/FotoBackground.jpg");
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            background-size: cover;
+        }
+		
+		.um-field input{
+			height: 33px !important;
+            background: rgba(255, 255, 255, 0.65) !important;
+            border: none !important;
+            font-weight: bold !important;
+            font-family: 'Dosis', sans-serif !important;
+            font-size: 13pt !important;
+            color: rgba(50, 50, 126, 1) !important;
+            transition: background 1s !important;
+		}
+       .um-2261.um .um-tip:hover, .um-2261.um .um-field-radio.active i, .um-2261.um .um-field-checkbox.active i, .um-2261.um .um-member-name a:hover, .um-2261.um .um-member-more a:hover, .um-2261.um .um-member-less a:hover, .um-2261.um .um-members-pagi a:hover, .um-2261.um .um-cover-add:hover, .um-2261.um .um-profile-subnav a.active, .um-2261.um .um-item-meta a, .um-account-name a:hover, .um-account-nav a.current, .um-account-side li a.current span.um-account-icon, .um-account-side li a.current:hover span.um-account-icon, .um-dropdown li a:hover, i.um-active-color, span.um-active-color{
+		   color: white !important;
+	   } 
+
+	   .um-2741.um .um-tip:hover, .um-2741.um .um-field-radio.active i, .um-2741.um .um-field-checkbox.active i, .um-2741.um .um-member-name a:hover, .um-2741.um .um-member-more a:hover, .um-2741.um .um-member-less a:hover, .um-2741.um .um-members-pagi a:hover, .um-2741.um .um-cover-add:hover, .um-2741.um .um-profile-subnav a.active, .um-2741.um .um-item-meta a, .um-account-name a:hover, .um-account-nav a.current, .um-account-side li a.current span.um-account-icon, .um-account-side li a.current:hover span.um-account-icon, .um-dropdown li a:hover, i.um-active-color, span.um-active-color{
+			color: white !important;
+	   }
+	   div.um{
+		   margin-bottom: 0 !important;
+	   }
+	   .um-field-c .um-field-checkbox{
+		   top: 0 !important;
+	   }
+
+	   p.login-failed{
+		    background-color: rgba(255,255,255,0.7);
+			padding: 10px;
+			font-size: 12px;
+			border-radius: 3px;
+			margin-top: 20px;
+	   }
+.FontDanger {
+    font-family: 'Dosis', sans-serif;
+    font-size: 9pt;
+    color: red;
+    font-weight: bold;
+}
+
+        ::-webkit-input-placeholder {
+            font-family: 'Dosis', sans-serif;
+            font-size: 10pt;
+            color: rgba(50, 50, 126, 1);
+            font-weight: bold;
+        }
+
+        :-moz-placeholder {
+            font-family: 'Dosis', sans-serif;
+            font-size: 10pt;
+            color: rgba(50, 50, 126, 1);
+            font-weight: bold;
+        }
+
+        ::-moz-placeholder {
+            font-family: 'Dosis', sans-serif;
+            font-size: 10pt;
+            color: rgba(50, 50, 126, 1);
+            font-weight: bold;
+        }
+
+        :-ms-input-placeholder {
+            font-family: 'Dosis', sans-serif;
+            font-size: 10pt;
+            color: rgba(50, 50, 126, 1);
+            font-weight: bold;
+        }
+
+        #wp-submit {
+            background: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            transition: background 1s;
+        }
+            #wp-submit:hover {
+                background: rgba(255, 255, 255, 1);
+                transition: background 1s;
+            }
+
+
+
+
+    a.inscrever{
+        font-family: 'Dosis';
+        font-size: 14pt;
+        font-weight: bold;
+        color: white;
+		display: block;
+		text-align: center;
+    }
+	.um-col-alt-b a.um-link-alt{
+        font-family: 'Dosis' !important;
+        font-size: 9pt !important;
+        font-weight: bold !important;
+        color: white !important;
+        display: block !important;
+        text-align: center !important;
+    }
+    a.esqueci-senha{
+        font-family: 'Dosis';
+        font-size: 9pt;
+        font-weight: bold;
+        color: white;
+        display: block;
+        text-align: center;
+    }
