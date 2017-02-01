@@ -186,7 +186,7 @@
 
 								</div>	
 								<div id="actions" style="clear: left; float: left; position: relative; left: 80%; ">
-									<button id="salvar"  class="btn btn-primary">Salvar</button>
+									<button id="salvar" class="btn btn-primary">Salvar</button>
 									<button type="reset" class="btn">Limpar</button>
 								</div>
 							  </div>
@@ -282,12 +282,9 @@
 				       		}
 				       	}
 
-
-				       	//list.splice($(this).children().attr("name") ,1);
-				       	console.log(ordem);
 				       	$(this).remove();
 				       }
-				       //console.log(list);
+
 				       if(count==qtd){
 				       		$("#exclude").hide();
 				       		$(".fotos tr").remove();
@@ -297,11 +294,18 @@
 				})
 		});
 		
+		document.getElementById("nome").value = localStorage.getItem("nome");
+
 		$("#salvar").click(function(event){
-			alert($('#tabela_categorias tr').length);
-			if($("nome").text=="" || $("pasta").text=="" || $('#tabela_categorias tr').length==1 || $('#tabela_caracteristicas tr').length==1){
+			//alert($('#tabela_categorias tr').length);
+			 
+			if($("nome").text=="" || ordem.leght==0 || $('#tabela_categorias tr').length==1 || $('#tabela_caracteristicas tr').length==1){
 				alert("faltou algo");
+				//return true;
 			}
+			localStorage.setItem("nome", $("nome").text);
+			location.reload();
+
 		});
 		//$('body').on('click', 'a.myclass', function() {
 		$("body").on("click", ".img" , function(event){

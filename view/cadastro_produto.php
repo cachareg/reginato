@@ -72,7 +72,7 @@
 		$.ajax({
 				url: "../controllers/cadastros.php",
 		        context: document.body,
-		        data: "action=getAllProduct",
+		        data: "action=getAllProdutos",
 		        dataType:'json',
 		        type: "GET",
 		        success: function(data){
