@@ -304,7 +304,6 @@
 		        	console.log(key);
 		          	formData.append(key, ordem[key]);
 		        }
-		        console.log(formData);
 		        formData.append("action", "inserirProduto");
 				$.ajax({
 					url: "../controllers/cadastros.php",
@@ -314,7 +313,7 @@
 	                	console.log(data);
 	            	},
 	            	error: function (data) {
-	                	console.log("erro");
+	                	console.log(data);
 	            	},
 		            cache: false,
 		            contentType: false,

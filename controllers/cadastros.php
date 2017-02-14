@@ -29,17 +29,27 @@ if(isset($_GET['action'])) {
 if(isset($_POST['action'])) {
   if($_POST['action'] == 'inserirProduto') {
     $log=True;
+    $rett = "";
     $cont=0;
-    $vec[]=array(); 
+    $vec[]=array();
+    $target_dir = "uploads/"; 
     while($log){
       if(isset($_FILES[$cont])){
-        array_unshift($vec,$_FILES[$cont]);
-      }
-      else{
+        $target_file = $target_dir . basename($_FILES[$cont]["name"]);
+        //echo var_dump($_FILES[$cont]["tmp_name"]);
+        if (move_uploaded_file($_FILES[$cont]["tmp_name"], $target_file)) {
+            $rett = $rett.$target_file;
+            //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        }else{
+          $rett = $rett."nao consegui";
+        }
+        //array_unshift($vec,$_FILES[$cont]);
+      }else{
+        $rett = $rett."nao consegui 2";
         $log=False;
       }
       $cont++;
     }
-    echo json_encode($vec);
+    echo json_encode($rett);
   }
 }
