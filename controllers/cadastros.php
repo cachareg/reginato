@@ -1,15 +1,13 @@
 <?php
 header('Content-type:application/json');
 include "../dao/DAOProduto.php";
-include "../dao/DAOCaracteristicas.php";
-require_once('../model/Produto.php'); 
 
 if(isset($_GET['action'])) {
     if($_GET['action'] == 'getAllProdutos') {
     	header('Content-type:application/json');
 	    $dao = new DAOProduto();
 	    $produtos = $dao->getAllProdutos(null, null);
-		echo json_encode($produtos);
+		  echo json_encode($produtos);
     }
     if($_GET['action'] == 'getAllProdutosAtivosPorCategoriasSubcategorias') {
     	$categorias= json_decode($_GET['categorias']); 
@@ -24,10 +22,24 @@ if(isset($_GET['action'])) {
    		}
    		echo json_encode($produtos);
     }
-    if($_GET['action'] == 'getCaracteristicasPorProduto') {
-    	$prod= $_GET['id'];
-   		$dao = new DAOCaracteristicas();
-   		$caracteristicas = dao->getCaracteristicasPorProduto($categorias,$subcategorias );
-    }
+    
 }
 
+
+if(isset($_POST['action'])) {
+  if($_POST['action'] == 'inserirProduto') {
+    $log=True;
+    $cont=0;
+    $vec[]=array(); 
+    while($log){
+      if(isset($_FILES[$cont])){
+        array_unshift($vec,$_FILES[$cont]);
+      }
+      else{
+        $log=False;
+      }
+      $cont++;
+    }
+    echo json_encode($vec);
+  }
+}

@@ -7,9 +7,10 @@
 
 
 		public function getAllProdutos($categorias, $subcategorias){
+			
 			$produtos[]=array(); 
-			$connection = mysql_connect("localhost", "root", "");
-			mysql_select_db("reginato");
+			$connection = mysqli_connect("localhost", "root", "", "reginato");
+			
 
 			$sql= "select * FROM produto";
 			if($categorias!=null && count($categorias)>0){
@@ -55,9 +56,9 @@
 			
 			$sql=$sql." group by produto.id";
 
-			$result=mysql_query($sql, $connection);
-			mysql_close($connection);
-			while ($row = mysql_fetch_object($result)) {
+			$result=mysqli_query( $connection, $sql);
+			mysqli_close($connection);
+			while ($row = mysqli_fetch_object($result)) {
 			    $product = new Produto();
 			    $product->setId($row->id+0);
 			    $product->setNome($row->nome);
