@@ -1,10 +1,10 @@
 <?php
 header('Content-type:application/json');
 include "../dao/DAOProduto.php";
+include "../dao/DAOCaracteristica.php";
 
 if(isset($_GET['action'])) {
     if($_GET['action'] == 'getAllProdutos') {
-    	header('Content-type:application/json');
 	    $dao = new DAOProduto();
 	    $produtos = $dao->getAllProdutos(null, null);
 		  echo json_encode($produtos);
@@ -22,9 +22,13 @@ if(isset($_GET['action'])) {
    		}
    		echo json_encode($produtos);
     }
+    if($_GET['action'] == 'getAllCaracteristicas') {
+      $dao = new DAOCaracteristica();
+      $car = $dao->getAllCaracteristicas();
+      echo json_encode($car);
+    }
     
 }
-
 
 if(isset($_POST['action'])) {
   if($_POST['action'] == 'inserirProduto') {
@@ -32,7 +36,7 @@ if(isset($_POST['action'])) {
     $rett = "";
     $cont=0;
     $vec[]=array();
-    $target_dir = "uploads/"; 
+    $target_dir = "produtos/"; 
     while($log){
       if(isset($_FILES[$cont])){
         $target_file = $target_dir . basename($_FILES[$cont]["name"]);
@@ -41,15 +45,16 @@ if(isset($_POST['action'])) {
             $rett = $rett.$target_file;
             //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         }else{
-          $rett = $rett."nao consegui";
+          //$rett = $rett."nao consegui";
         }
         //array_unshift($vec,$_FILES[$cont]);
       }else{
-        $rett = $rett."nao consegui 2";
+        //$rett = $rett."nao consegui 2";
         $log=False;
       }
       $cont++;
     }
     echo json_encode($rett);
   }
+  
 }

@@ -6,7 +6,7 @@
 		public $ativo;
 		public $lancamento;
 
-		function getId(){
+		public function getId(){
 			return $this->id;
 		}	
 

@@ -23,10 +23,10 @@
 define('DB_NAME', 'wp_reginato');
 
 /** MySQL database username */
-define('DB_USER', 'silas');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'senha23');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

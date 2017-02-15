@@ -53,8 +53,30 @@
 	$( function() {
 
 	$( document ).ready(function() {
+		$.ajax({
+				url: "../controllers/cadastros.php",
+		        context: document.body,
+		        data: "action=getAllCaracteristicas",
+		        dataType:'json',
+		        type: "GET",
+		        	success: function(data){
+		        		console.log(data);
+		        		//$("#selectError2").empty();
+		        		for (var i = 0, len = data.length; i < len; i++) {
+		        			console.log(data[i].valoresSelecionadosPorFoto);
 
-		localStorage.clear();
+		        			$("#selectError2").append('<option value="'+i+'">'+data[i].valoresSelecionadosPorFoto+'</option>');
+		        		}
+		        		
+		        		
+		        		
+			        },
+			        error: function(data){
+					 	console.log(data);
+			        }
+
+		});
+		//localStorage.clear();
 	});
 	$( "#dialog" ).dialog();
 	 } );
@@ -157,8 +179,8 @@
 									<label class="control-label" for="selectError2">Características</label>
 									<div class="controls">
 								  		<select id="selectError2" data-rel="chosen">
-											<option>Cor do Alumínio</option>
-											<option>Tela</option>
+											
+											
 								  		</select>
 								   		<button class="btn"  onclick="addRowCar()" type="button">OK</button>
 									</div>
@@ -301,7 +323,6 @@
 			}else{
 				var formData = new FormData();
 		        for (var key in ordem) {
-		        	console.log(key);
 		          	formData.append(key, ordem[key]);
 		        }
 		        formData.append("action", "inserirProduto");
