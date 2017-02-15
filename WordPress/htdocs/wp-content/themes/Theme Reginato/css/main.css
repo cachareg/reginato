@@ -17,12 +17,17 @@ font-family: 'Arial';
 .filtros{
     margin-top: 10px;
     padding: 5px;
-    font-weight: normal; 
-    font-size:15px;
-    background: #bb934d;
+    font-weight: bold; 
+    font-size:12px;
+    background: #382b20;
     color:white;
 }
 
+.low-border{
+    border-top: 1px solid;
+    border-color: #382b20;
+    padding: 10px;
+}
 
 
 input[type=checkbox].css-checkbox {
@@ -37,14 +42,16 @@ input[type=checkbox].css-checkbox {
                             background-repeat:no-repeat;
                             background-position: 0 0;
                             background-size: 20px;
-                            font-size:15px;
+                            font-size:12px;
                             vertical-align:middle;
                             cursor:pointer;
+                            transition: 0.5s;
                         }
 
                         input[type=checkbox].css-checkbox:checked + label.css-label {
                             background: url("images/csscheckbox_on.png") no-repeat;
                             background-size: 20px; 
+                            transition: 0.5s;
                         }
                         label.css-label {
                 font-weight: normal;
@@ -85,14 +92,9 @@ padding: 7px;
 
 .arrow-bottom{
     background-color: white;
-    opacity: 0.5;
-    transition: opacity 0.5s; 
+    opacity: 1;
     width: 10%;
     padding-right: 2%;
-}
-.arrow-bottom:hover{
-    opacity: 1;
-    transition: opacity 0.5s; 
 }
 
 .container{
@@ -164,9 +166,10 @@ padding: 7px;
 }
 .noticias{
     padding: 10px 0;
+    margin-bottom: 20%;
 }
 .titulo-noticias{
-    font-family: 'IndieFlower', Sans-Serif;
+    font-family: 'Arial';
     font-size: 40px;
     color: #999999;
     text-align: right;
@@ -191,14 +194,15 @@ margin-bottom: 10%;
 }
 
 .noticia-text{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Arial';
     color: black;
-    font-size: 15px;
+    font-size: 12px;
+    text-align: center;
 }
 
 .noticia-title p{
     margin-bottom: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Arial';
 }
 
 .noticia-body{
@@ -210,7 +214,7 @@ margin-bottom: 10%;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px; 
     border-top-left-radius: 5px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Arial';
     font-size: 12px;
     margin-bottom: 30px;
 }
@@ -218,7 +222,7 @@ margin-bottom: 10%;
     background-color: #ffffff;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Arial';
     font-size: 12px;
     margin-bottom: 30px;
     padding: 20px;
@@ -237,7 +241,7 @@ margin-bottom: 10%;
     background-color: white;
     border-style: solid;
     border-width: 1px;
-    border-color: #bb934d;
+    border-color: #382b20;
 }
 .noticia-mobile-adicionar{
     border-style: solid;
@@ -245,22 +249,24 @@ margin-bottom: 10%;
     cursor: pointer;
     color: #bb934d;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 12px;
     padding: 4px;
 }
 .noticia-body:hover .noticia-hover{
-    opacity: 1;
+    opacity: 0.8;
     transition: 1s;
 }
 .noticia-hover a{
+    font-family: 'Arial';
     border-style: solid;
     border-width: 1px;
     cursor: pointer;
     color: #bb934d;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 12px;
     padding: 4px;
 }
+
 .noticia-title:after{
     content: "";
     width: 0;
@@ -500,9 +506,11 @@ padding: 1%;
 
     input[type=checkbox].css-checkbox + label.css-label {
         font-size:12px;
+        transition: 0.5s;
     }
     label.css-label:hover {
             font-weight: normal;
+            transition: 0.5s;
             }
 
 .content{

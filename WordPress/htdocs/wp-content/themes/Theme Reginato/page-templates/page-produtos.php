@@ -59,7 +59,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("https://images.etna.com.br/produtos/44/296644/296644_ampliada.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>Lorem ipsum dolor sit amet</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -67,7 +67,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Indaia_banqueta-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>consectetur adipiscing elit, sed do eiusmod</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -75,7 +75,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Tulipa_base_de_mesa-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>tempor incididunt ut labore et</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -83,7 +83,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Atlanta_Deck_Chair-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>dolore magna aliqua. Ut enim</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -91,7 +91,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Cairo_Espreguicadeira-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>minim veniam, quis nostrud exercitation</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -99,7 +99,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Cairo_Espreguicadeira-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>unde omnis iste natus error sit</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -107,7 +107,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Memphis_espreguicadeira-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>how all this mistaken idea</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -115,7 +115,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Brasil_mesa_de_centro-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>odio dignissimos ducimus qui blanditiis</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -123,7 +123,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Siena_mesa_jantar-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>debitis aut rerum necessitatibus</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -131,7 +131,7 @@
 
                             <div class='col-sm-4 col-md-4'>
                             <div class='noticia-body' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Brasil_poltrona-300x300.jpg"'>
-                            <div class='noticia-hover'><p class='noticia-text'>Descrição</p>
+                            <div class='noticia-hover'><p class='noticia-text'>rerum hic tenetur a sapiente</p>
                             <a data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
                             </div>
                             </div>
@@ -150,9 +150,9 @@
             <div class="slider-noticias hidden-sm hidden-md hidden-lg col-xs-12" data-slick='{"slidesToShow": 1, "rows":6, "slidesToScroll": 1}'>
                             
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
-                                    <div class='noticia-body col-xs-7' style='background-image: url("https://images.etna.com.br/produtos/44/296644/296644_ampliada.jpg")'></div>
+                                    <div class='noticia-body col-xs-7' style='background-image: url("https://images.etna.com.br/produtos/44/296644/296644_ampliada.jpg");'></div>
                                         <div class="col-xs-5">
                                             <p class='noticia-text'>Lorem ipsum dolor sit amet</p>
                                             <a class="noticia-mobile-adicionar" data-toggle="modal" data-target=".noticiaModal'.$i.'">ADICIONAR</a>
@@ -160,7 +160,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Indaia_banqueta-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -170,7 +170,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Tulipa_base_de_mesa-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -180,7 +180,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Atlanta_Deck_Chair-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -190,7 +190,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Cairo_Espreguicadeira-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -200,7 +200,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Memphis_espreguicadeira-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -210,7 +210,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Brasil_mesa_de_centro-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -220,7 +220,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Siena_mesa_jantar-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -230,7 +230,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Mesa_marina_caf%C3%A9_com_furo-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -240,7 +240,7 @@
                                 </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container low-border">
                                 <div class="row">
                                     <div class='noticia-body col-xs-7' style='background-image: url("http://greenhousemoveis.com.br/wp-content/uploads/2016/05/Brasil_poltrona-300x300.jpg")'></div>
                                         <div class="col-xs-5">
@@ -253,9 +253,9 @@
             </div>
 
     <div class="row" style="position:relative; height:auto;">
-    <img class="arrow arrow-left col-xs-2 col-sm-1 col-md-1 col-lg-1" src="<?php echo get_template_directory_uri() . '/images/arrow-left.png'?>">
+    <img class="arrow arrow-left col-xs-2 col-sm-1 col-md-1 col-lg-1" src="<?php echo get_template_directory_uri() . '/images/arrow-left.png'?>" id="arrow-left">
     <div class="col-xs-8 col-sm-11 col-md-11 col-lg-11"></div>
-    <img class="arrow arrow-right col-xs-2 col-sm-1 col-md-1 col-lg-1" src="<?php echo get_template_directory_uri() . '/images/arrow-right.png'?>">
+    <img class="arrow arrow-right col-xs-2 col-sm-1 col-md-1 col-lg-1" src="<?php echo get_template_directory_uri() . '/images/arrow-right.png'?>" id="arrow-right">
     </div>
 
         </div>
@@ -273,17 +273,32 @@
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript">
 
+
+$("#arrow-left").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
+$("#arrow-right").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
+
+
+
 $(function(){
 $('#example_tree').find('img').click(function(e){
-    $(this).parent().children('UL').toggle();
 
-    if($(this).attr("src") == "<?php echo get_template_directory_uri() . '/images/arrow-right.png'?>"){
+
+
+    $(this).parent().children('UL').toggle("Fold", "", 500);
+
+    if($(this).attr("src") == "<?php echo get_template_directory_uri() . '/images/arrow-right-filter.png'?>"){
     // code to be executed if condition is true
     $(this).attr("src","<?php echo get_template_directory_uri() . '/images/arrow-top.png'?>");
 } 
 else {
     // code to be executed if condition is false
-    $(this).attr("src","<?php echo get_template_directory_uri() . '/images/arrow-right.png'?>");
+    $(this).attr("src","<?php echo get_template_directory_uri() . '/images/arrow-right-filter.png'?>");
 }    
 });
 });
