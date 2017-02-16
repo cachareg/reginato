@@ -3,6 +3,7 @@
 <?php get_header(); ?>
 
 <div class="topimage" id="topimage">
+<div class="leftimage" id="leftimage"></div>
 
 </div>
 
@@ -25,17 +26,23 @@ $('#example_tree').find('SPAN').click(function(e){
 
 $( document ).ready(function() {
 
-$('#topimage').css("height",$('#menu').css("height"))
+$('#navheader').css("height",$('#menu').css("height"));
+$('#topimage').css("height",$('#navheader').css("height"))
 $('#bottonimage').css("height",$('#footer').css("height"));
-$('#content').css("margin-top",$('#menu').css("height"));
+$('#content').css("margin-top",$('#navheader').css("height"));
+$('.menu-list').css("top",$('#navheader').css("height"));
+$('#menu-filter').css("margin-top",$('#navheader').css("height"));
 
 });
 
 $( window ).resize(function() {
 
-$('#topimage').css("height",$('#menu').css("height"))
+$('#navheader').css("height",$('#menu').css("height"));
+$('#topimage').css("height",$('#navheader').css("height"))
 $('#bottonimage').css("height",$('#footer').css("height"));
-$('#content').css("margin-top",$('#menu').css("height"));
+$('#content').css("margin-top",$('#navheader').css("height"));
+$('.menu-list').css("top",$('#navheader').css("height"));
+$('#menu-filter').css("margin-top",$('#navheader').css("height"));
 
 });
 </script>

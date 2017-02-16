@@ -30,12 +30,15 @@ class UM_Logout {
 
 				if( function_exists('icl_get_current_language') ){
 					$language_code = icl_get_current_language();
-				}else if( function_exists('icl_object_id') && defined('ICL_LANGUAGE_CODE') ){
+				}else if( function_exists('icl_object_id') && defined('ICL_LANGUAGE_CODE') ){ // checks if WPML exists
 					$language_code = ICL_LANGUAGE_CODE;
 				}
 
 				$has_translation = true;
-				$trid = $sitepress->get_element_trid(  $current_page_ID  );
+
+				if( function_exists('icl_object_id')  && defined('ICL_LANGUAGE_CODE') && isset( $sitepress ) ){ // checks if WPML exists
+					$trid = $sitepress->get_element_trid(  $current_page_ID  );
+				}
 
 				if( icl_get_default_language() !== $language_code ){
 					$not_default_lang = true;

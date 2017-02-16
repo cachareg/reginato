@@ -354,7 +354,7 @@
 						} 
 					break;
 					case 'contains': 
-						if ( !strstr( $field, $val ) ){
+						if ( strstr( $field, $val ) ){
 							$state = 1; 
 						}else{
 							$state = 0;
@@ -435,7 +435,7 @@
 						}
 					break;
 					case 'contains': 
-						if ( !strstr( $field, $val ) ){
+						if ( strstr( $field, $val ) ){
 							$state = 0; 
 						}else{
 							$state = 1;
@@ -1056,11 +1056,18 @@
 
 			if ( is_user_logged_in() && isset( $data['editable'] ) && $data['editable'] == 0 ) {
 
-				if ( um_is_user_himself() && !um_user('can_edit_everyone') )
+				if( isset( $data['public'] ) && $data['public'] == "-2"){
 					return true;
+				}
 
-				if ( !um_is_user_himself() && !um_user_can('can_edit_everyone') )
+				if ( um_is_user_himself() && !um_user('can_edit_everyone') ){
+					return true;
+				}
+
+
+				if ( !um_is_user_himself() && !um_user_can('can_edit_everyone') ){
 					return false;
+				}
 
 			}
 
