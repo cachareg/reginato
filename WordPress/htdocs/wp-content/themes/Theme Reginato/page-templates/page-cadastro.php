@@ -3,13 +3,13 @@
 <?php get_header(); ?>
 
 <div class="topimage" id="topimage">
-<div class="leftimage" id="leftimage"></div>
 
 </div>
 
 <div class="content" id="content">  
 	<p class="pagetittle">Cadastro</p>
-	<?php echo do_shortcode('[ultimatemember form_id=5]');?>
+
+	<?php echo do_shortcode('[wpmem_form register]');?>
 </div>
 
 <div class="bottonimage" id="bottonimage"></div>
@@ -25,25 +25,15 @@ $('#example_tree').find('SPAN').click(function(e){
 
 
 $( document ).ready(function() {
-
-$('#navheader').css("height",$('#menu').css("height"));
-$('#topimage').css("height",$('#navheader').css("height"))
+$('#topimage').css("height",$('#menu').css("height"))
 $('#bottonimage').css("height",$('#footer').css("height"));
-$('#content').css("margin-top",$('#navheader').css("height"));
-$('.menu-list').css("top",$('#navheader').css("height"));
-$('#menu-filter').css("margin-top",$('#navheader').css("height"));
-
+$('#content').css("margin-top",$('#menu').css("height"));
 });
 
 $( window ).resize(function() {
-
-$('#navheader').css("height",$('#menu').css("height"));
-$('#topimage').css("height",$('#navheader').css("height"))
+$('#topimage').css("height",$('#menu').css("height"))
 $('#bottonimage').css("height",$('#footer').css("height"));
-$('#content').css("margin-top",$('#navheader').css("height"));
-$('.menu-list').css("top",$('#navheader').css("height"));
-$('#menu-filter').css("margin-top",$('#navheader').css("height"));
-
+$('#content').css("margin-top",$('#menu').css("height"));
 });
 </script>
 

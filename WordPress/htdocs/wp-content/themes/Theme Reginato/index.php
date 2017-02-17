@@ -5,17 +5,13 @@
 <img class="mySlides index1">
 <img class="mySlides index2">
 
-<div class="content" id="content">  
+<div class="content">  
     <img src="<?php echo get_template_directory_uri() . '/images/Logo_FundoBranco.png'?>" class="logo">
 </div>
 
 
 <?php get_footer(); ?>
 
-
-
-
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
 <script>
 var slideIndex = 0;
@@ -34,24 +30,5 @@ function carousel() {
     //x[slideIndex-1].style.display = "block";
     setTimeout(carousel, 6000); // Change image every 2 seconds
 }
-
-
-
-$( document ).ready(function() {
-$('#content').css("height",$( window ).height());
-$('#navheader').css("height",$('#menu').css("height"));
-$('#content').css("margin-top",$('#navheader').css("height"));
-$('.menu-list').css("top",$('#navheader').css("height"));
-$('#menu-filter').css("margin-top",$('#navheader').css("height"));
-});
-
-$( window ).resize(function() {
-$('#content').css("height",$( window ).height());
-$('#navheader').css("height",$('#menu').css("height"));
-$('#content').css("margin-top",$('#navheader').css("height"));
-$('.menu-list').css("top",$('#navheader').css("height"));
-$('#menu-filter').css("margin-top",$('#navheader').css("height"));
-});
-
 
 </script> 

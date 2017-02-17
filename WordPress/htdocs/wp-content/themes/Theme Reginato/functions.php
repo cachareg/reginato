@@ -162,3 +162,13 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+add_filter( 'wpmem_login_form_args',    'remove_wpmem_txt_code' );
+add_filter( 'wpmem_register_form_args', 'remove_wpmem_txt_code' );
+function remove_wpmem_txt_code( $args ){
+    $args = array(
+        'txt_before' => '',
+        'txt_after'  => ''
+    );
+    return $args;
+}
