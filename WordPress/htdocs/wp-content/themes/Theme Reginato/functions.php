@@ -172,3 +172,12 @@ function remove_wpmem_txt_code( $args ){
     );
     return $args;
 }
+
+add_filter( 'wpmem_login_redirect', 'my_login_redirect', 10, 2 );
+ 
+function my_login_redirect( $redirect_to, $user_id ) {
+    // return the url that the login should redirect to
+    return 'http://localhost';
+}
+
+add_action('wp_logout',create_function('','wp_redirect(home_url());exit();'));

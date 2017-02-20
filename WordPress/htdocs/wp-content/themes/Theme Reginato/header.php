@@ -33,7 +33,22 @@
 
         <ul class="menu-list" id="main-menu">
             <li><a href="/">Home</a></li>
-            <li><a href="/produtos">Produtos</a></li>
+
+            <?php
+                if(is_user_logged_in()){
+                    ?>
+                        <li><a href="/produtos">Produtos</a></li>
+                    <?php
+                }else{
+                    ?>
+                        <li><a href="/produtos">Produtos</a></li>
+                    <?php
+                }
+            ?>
+
+
+
+            
             <li><a href="/lancamentos">Lançamentos</a></li>
             <li><a href="/contato">Contato</a></li>
 
@@ -42,7 +57,7 @@
         echo "<a href='/login' class='inscreva'>Login</a>";
      }else{
         ?>
-        <div class='bemvindo'>Bem Vindo, <?php echo $current_user->user_login ?> </div>
+        <div class='bemvindo'>Bem Vindo, <?php echo $current_user->user_login ?></div>
         <a href="<?php echo wp_logout_url(); ?>" class="inscreva">Logout</a>
         <?php
      }

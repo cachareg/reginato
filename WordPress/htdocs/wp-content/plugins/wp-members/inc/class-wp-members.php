@@ -729,15 +729,15 @@ class WP_Members {
 		$defaults = array(
 			
 			// Login form.
-			'login_heading'        => __( 'Existing Users Log In', 'wp-members' ),
+			'login_heading'        => __( 'Login', 'wp-members' ),
 			'login_username'       => __( 'Username' ),
 			'login_password'       => __( 'Password' ),
 			'login_button'         => __( 'Log In' ),
 			'remember_me'          => __( 'Remember Me' ),
-			'forgot_link_before'   => __( 'Forgot password?', 'wp-members' ) . '&nbsp;',
-			'forgot_link'          => __( 'Click here to reset', 'wp-members' ),
-			'register_link_before' => __( 'New User?', 'wp-members' ) . '&nbsp;',
-			'register_link'        => __( 'Click here to register', 'wp-members' ),
+			'forgot_link_before'   => __( 'Esqueceu a senha?', 'wp-members' ) . '&nbsp;',
+			'forgot_link'          => __( 'Clique aqui para recuperar', 'wp-members' ),
+			'register_link_before' => __( 'Novo usuário?', 'wp-members' ) . '&nbsp;',
+			'register_link'        => __( 'Clique aqui para Registrar', 'wp-members' ),
 			
 			// Password change form.
 			'pwdchg_heading'       => __( 'Change Password', 'wp-members' ),
@@ -759,7 +759,7 @@ class WP_Members {
 			'username_button'      => __( 'Retrieve username', 'wp-members' ),
 			
 			// Register form.
-			'register_heading'     => __( 'New User Registration', 'wp-members' ),
+			'register_heading'     => __( 'Cadastro', 'wp-members' ),
 			'register_username'    => __( 'Choose a Username', 'wp-members' ),
 			'register_rscaptcha'   => __( 'Input the code:', 'wp-members' ),
 			'register_tos'         => __( 'Please indicate that you agree to the %s TOS %s', 'wp-members' ),
