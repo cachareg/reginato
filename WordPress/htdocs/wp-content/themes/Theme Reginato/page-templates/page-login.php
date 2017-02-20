@@ -8,7 +8,7 @@
 </div>
 
 <div class="content" id="content">  
-	<p class="pagetittle">Login</p>
+	<p class="pagetittle">Faça login para ter acesso ao conteúdo do site</p>
 	<?php echo do_shortcode('[wpmem_form login]');?>
 </div>
 

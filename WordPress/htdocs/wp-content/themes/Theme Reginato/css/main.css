@@ -18,6 +18,10 @@ list-style-type: none;
 font-family: 'Arial';
 }
 
+li > ul{
+    margin-left: 0;
+}
+
 #wpmem_login label{
 font-family: 'Arial';
 font-size:12px;
@@ -686,12 +690,19 @@ padding: 1%;
     margin-right: 20%;
 }
 
-@media (orientation: portrait){
+@media (orientation: portrait) and (max-width: 767px), (orientation: landscape) and (max-width: 767px){
+
+li > ul{
+    margin-left: 10%;
+}
+
     .bemvindo{
     left: 10%;
     width: 80%;
+    }
+.pagetittle{
+text-align:center;
 }
-
     #homecontent{
         height: 500px;
     }
@@ -955,8 +966,31 @@ ul li {
     -ms-transform: translateX(220px);
     transform: translateX(220px);
 }
+}
 
+@media (orientation: landscape) and (max-width: 767px){
 
+.navbar-header {
+    background: rgba(0,0,0, 0.5);
+    padding: 1%;
+}
+.arrow-left{
+    transform: scale(0.5);
+}
 
+.arrow-right{
+    transform: scale(0.5);
+}
+
+.logo{
+    position: fixed;
+    top:10%;
+    left: 40%;
+    display: block;
+    margin: auto;
+    margin-top: 2%;
+    width: 20%;
+    border-style: none;
+}
 
 }
