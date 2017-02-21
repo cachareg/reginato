@@ -1,17 +1,17 @@
 <?php
 	Class Produto{
-		public $id;
+		public $id_produto;
 		public $nome;
 		public $fabrica;
 		public $ativo;
 		public $lancamento;
 
 		public function getId(){
-			return $this->id;
+			return $this->id_produto;
 		}	
 
 		public function setId($value){
-			$this->id= $value;
+			$this->id_produto= $value;
 		}	
 
 		public function setNome($value){

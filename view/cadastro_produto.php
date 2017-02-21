@@ -4,7 +4,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>SimpliQ - Flat & Responsive Bootstrap Admin Template</title>
+	<title></title>
 	<meta name="description" content="SimpliQ - Flat & Responsive Bootstrap Admin Template.">
 	<meta name="author" content="Łukasz Holeczek">
 	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
@@ -105,10 +105,10 @@
 	<body>
 		
 		
-		<div id="conteudo" class="span10" style=" display:block; overflow:auto; height:100%" >
+		<div id="conteudo" class="span10" height="900" >
 			
 
-			<div class="row-fluid" style=" width:100%; height:100%" >		
+			<div class="row-fluid"  >		
 
 				<div class="box span12" scroll="no" style="width:100%" >
 					<div class="box-header" data-original-title  style="width:100%">
@@ -130,8 +130,6 @@
 						  </thead>   
 						  <tbody>
 							
-							
-						  	
 						  </tbody>
 
 						</table>  
@@ -161,7 +159,8 @@
        		$('.row-fluid').empty();
        		$('.row-fluid').append($("#cadastros"));
        		$('#cadastros').attr('data','inserir_produto.html');
-       		$('#cadastros').css('height', window.innerHeight * 1.1);
+       		$('#cadastros').css('height', window.innerHeight * 0.9);
+       		
        		
      	}
      	function getfolder(e) {

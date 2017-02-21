@@ -2,6 +2,18 @@
 header('Content-type:application/json');
 include "../dao/DAOProduto.php";
 include "../dao/DAOCaracteristica.php";
+require_once("../dao/DAOFabrica.php");
+include "../dao/DAOCategoria.php";
+$out[]=array(); 
+   
+      $id_caracteristica= 1;
+      $dao = new DAOCaracteristica();
+      $caracteristica=$dao->buildCaracteristica($id_caracteristica);
+      $valores[]=array();
+      if($caracteristica->isValoresSelecionadosPorFoto()){
+          $caminhos = $dao->getFotos($id_caracteristica);
+          var_dump($caminhos);
+      }
 
 if(isset($_GET['action'])) {
     if($_GET['action'] == 'getAllProdutos') {
@@ -22,10 +34,32 @@ if(isset($_GET['action'])) {
    		}
    		echo json_encode($produtos);
     }
-    if($_GET['action'] == 'getAllCaracteristicas') {
+    if($_GET['action'] == 'getAllCaracteristicasCategoriasFabricas') {
+      $out[]=array(); 
+
       $dao = new DAOCaracteristica();
       $car = $dao->getAllCaracteristicas();
-      echo json_encode($car);
+      $out["caracteristicas"]= $car;
+      $dao = new DAOCategoria();
+      $cat = $dao->getAllCategorias();
+      $out["categorias"]= $cat;
+      $dao = new DAOFabrica();
+      $fab = $dao->getAllFabricas();
+      $out["fabricas"]= $fab;
+
+      echo json_encode(DAOCaracteristica::utf8_code_deep($out));
+    }
+
+    if($_GET['action'] == 'getValoresCaracteristica') {
+      $id_caracteristica= json_decode($_GET['id']);
+      $dao = new DAOCaracteristica();
+      $caracteristica=$dao->buildCaracteristica($id_caracteristica);
+      $valores[]=array();
+      if($caracteristica->isValoresSelecionadosPorFoto()){
+          $caminhos = $dao->getFotos();
+          var_dump($caminhos);
+      }
+      
     }
     
 }
@@ -36,7 +70,7 @@ if(isset($_POST['action'])) {
     $rett = "";
     $cont=0;
     $vec[]=array();
-    $target_dir = "produtos/"; 
+    $target_dir = "../fotos/produtos/"; 
     while($log){
       if(isset($_FILES[$cont])){
         $target_file = $target_dir . basename($_FILES[$cont]["name"]);
@@ -55,6 +89,8 @@ if(isset($_POST['action'])) {
       $cont++;
     }
     echo json_encode($rett);
-  }
+} 
+
+
   
 }

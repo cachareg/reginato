@@ -1,15 +1,15 @@
 <?php
 	Class Fabrica{
-		public $id;
+		public $id_fabrica;
 		public $nome;
 		public $ativo;
 
 		function getId(){
-			return $this->id;
+			return $this->id_fabrica;
 		}	
 
 		public function setId($value){
-			$this->id= $value;
+			$this->id_fabrica= $value;
 		}	
 
 		public function setNome($value){

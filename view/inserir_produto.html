@@ -47,48 +47,15 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
-
-
-	$( function() {
-
-	$( document ).ready(function() {
-		$.ajax({
-				url: "../controllers/cadastros.php",
-		        context: document.body,
-		        data: "action=getAllCaracteristicas",
-		        dataType:'json',
-		        type: "GET",
-		        	success: function(data){
-		        		console.log(data);
-		        		//$("#selectError2").empty();
-		        		for (var i = 0, len = data.length; i < len; i++) {
-		        			console.log(data[i].valoresSelecionadosPorFoto);
-
-		        			$("#selectError2").append('<option value="'+i+'">'+data[i].valoresSelecionadosPorFoto+'</option>');
-		        		}
-		        		
-		        		
-		        		
-			        },
-			        error: function(data){
-					 	console.log(data);
-			        }
-
-		});
-		//localStorage.clear();
-	});
-	$( "#dialog" ).dialog();
-	 } );
-	 </script>
+	
 
 </head>
 
-<body scroll="no" style=" height:100%; display:block; overflow:auto">
+<body >
 
-	<div id="inserir_produto" scroll="no" style="display:block; overflow:auto">
+	<div id="inserir_produto" >
 
-			<div class="row-fluid" style=" display:block; overflow:auto">		
+			<div class="row-fluid" >		
 				<div class="box span12">
 					<div class="box-header" data-original-title >
 							<h2><i class="icon-user"></i><span class="break"></span>Novo</h2>
@@ -125,9 +92,7 @@
 								<label class="control-label" for="selectError">Fábrica</label>
 
 								<div class="controls">
-								  <select id="selectError" data-rel="chosen">
-									<option>Green House</option>
-									<option>Tissot</option>
+								  <select id="fabrica_select" data-rel="chosen">
 								  </select>	
 								
 							  	</div>
@@ -135,10 +100,10 @@
 							  <div class="control-group">
 							  <div class="controls">
 								  <label class="checkbox inline">
-									<input type="checkbox" id="inlineCheckbox2" value="option5"> Lançamento
+									<input type="checkbox" id="inlineCheckbox2" class="lanc" value="option5"> Lançamento</input>
 								  </label>
 								  <label class="checkbox inline">
-									<input type="checkbox" id="inlineCheckbox2" checked selected="true" value="option5"> Ativo
+									<input type="checkbox" id="inlineCheckbox2" class="ativo" checked selected="true" value="option5"> Ativo</input>
 								  </label>
 								</div>	
 								</div>
@@ -146,9 +111,8 @@
 									<label class="control-label" for="selectError">Categoria</label>
 
 									<div class="controls">
-									  <select id="selectError" data-rel="chosen">
-										<option>Mesa de Alumínio</option>
-										<option>Cadeira de Tela</option>
+									  <select id="categoria" data-rel="chosen">
+										
 									  </select>	
 									  <button class="btn"  onclick="addRowCat()" type="button">OK</button>
 									</div>
@@ -168,9 +132,7 @@
 													                                    
 												  </tr>
 											  </thead>   
-											  <tbody>
-												                         
-											  </tbody>
+										
 											</table>  
 										</div>     
 									</div>
@@ -239,7 +201,7 @@
 	<script>
 		var index=0;
 		var list = new Array();
-		var ordem= [];
+		var ordem= []; 
 		var j=0;
 		var sem=1;
 		function loadname(img){ 
@@ -319,12 +281,36 @@
 		$("#salvar").click(function(event){
 			//alert($('#tabela_categorias tr').length);
 			if($("nome").text=="" || $("pasta").text=="" || $('#tabela_categorias tr').length==1 || $('#tabela_caracteristicas tr').length==1){
-				alert("faltou algo");
+				alert("aqui");
 			}else{
 				var formData = new FormData();
 		        for (var key in ordem) {
 		          	formData.append(key, ordem[key]);
 		        }
+		       	var $select= $("#nome");
+		        formData.append("nome", $("#nome").val());
+		        console.log("nome = "+$("#nome").val());
+		        var $select= $("#fabrica_select");
+		        formData.append("fabrica",$($select.find(":selected")[0]).text());
+		        console.log("fabrica = "+$($select.find(":selected")[0]).text());
+		        console.log($(".lanc")[0].checked);
+		        formData.append("lancamento",$(".lanc")[0].checked);
+		        console.log($(".ativo")[0].checked);
+		        formData.append("ativo",$(".ativo")[0].checked);
+		        
+		        ///var size_categorias =$("#tabela_categorias > tr").length;
+		        var $tableCatSize= $($("#tabela_categorias").find("thead")[0]).find("tr").length;
+		        var $tableCarSize= $($("#tabela_caracteristicas").find("thead")[0]).find("tr").length;
+		        var categorias= [];
+		        var caracteristicas= [];
+		        for(var i=1;i<$tableCatSize;i++){
+		        	categorias[i]= ($($($("#tabela_categorias").find("thead")[0]).find("tr").find("td")[0]).html());
+		        }
+		        formData.append("categorias", categorias);
+		        for(var i=1;i<$tableCarSize;i++){
+		        	caracteristicas[i]= ($($($("#tabela_caracteristicas").find("thead")[0]).find("tr").find("td")[0]).html());
+		        }
+
 		        formData.append("action", "inserirProduto");
 				$.ajax({
 					url: "../controllers/cadastros.php",
@@ -359,7 +345,8 @@
      			}
      		}
      		if($("#selectError").val()!= ""){		
-     			$('#tabela_categorias tr:last').after('<tr> <td>'+$("#selectError").val()+'</td> <td><a class="btn btn-danger" ><i class="icon-trash "></i> </a></td>');
+     			//$('#tabela_categorias > tbody').appendTo('<tr> <td>'+$("#selectError").val()+'</td> <td><a class="btn btn-danger" ><i class="icon-trash "></i> </a></td>');
+     			$('#tabela_categorias tr:last').after('<tr> <td>'+$("#categoria").val()+'</td> <td><a class="btn btn-danger" ><i class="icon-trash "></i> </a></td>');
      		}
      	}
 
@@ -397,11 +384,14 @@
 
 		// Link to open the dialog
 		function openCar(){
+
 			$( "#dialog" ).dialog( "open" );
 		};
 
 
 	</script>
+	<script src="js/jquery.chosen.min.js"></script>	
+
 
 <!-- start: JavaScript-->
 	<script src="js/jquery-migrate-1.2.1.min.js"></script>	
@@ -419,7 +409,7 @@
 	<script src="js/jquery.flot.resize.min.js"></script>
 	<script src="js/jquery.flot.time.js"></script>
 		
-		<script src="js/jquery.chosen.min.js"></script>	
+		
 		<script src="js/jquery.uniform.min.js"></script>		
 		<script src="js/jquery.cleditor.min.js"></script>	
 		<script src="js/jquery.noty.js"></script>	
@@ -445,4 +435,64 @@
 	<!-- end: JavaScript-->
 	
 </body>
+
+	<script>
+	
+	var caracteristicas= [];
+
+	$( document ).ready(function() {
+
+		$.ajax({
+				url: "../controllers/cadastros.php",
+		        context: document.body,
+		        data: "action=getAllCaracteristicasCategoriasFabricas",
+		        dataType:'json',
+		        type: "GET",
+		        	success: function(data){
+		        		console.log(data);
+		        		//$("#selectError2").empty();
+		        		for (var i = 0, len = data["caracteristicas"].length; i < len; i++) {
+		        			console.log(data["caracteristicas"][i].nome);
+		        			if(data["caracteristicas"][i].nome!=""){
+		        				$("#selectError2").append('<option>'+data["caracteristicas"][i].nome+'</option>');
+		        			}
+		        		}	
+		        		for (var i = 0, len = data["fabricas"].length; i < len; i++) {
+		        			console.log(data["fabricas"][i].nome);
+		        			if(data["fabricas"][i].nome!=undefined){
+		        				$("#fabrica_select").append('<option value="'+data["fabricas"][i].id_fabrica+'">'+data["fabricas"][i].nome+'</option>');
+		        			}
+		        		}
+		        		for (var i = 0, len = data["caracteristicas"].length; i < len; i++) {
+		        			//console.log(data["caracteristicas"][i].nome);
+		        			if(data["caracteristicas"][i].nome!=undefined){
+		        				$("#selectError2").append('<option value="'+data["caracteristicas"][i].id_caracteristica+'">'+data["caracteristicas"][i].nome+'</option>');
+		        			}
+		        		}
+		        		for (var i = 0, len = data["categorias"].length; i < len; i++) {
+		        			//console.log(data["caracteristicas"][i].nome);
+		        			if(data["categorias"][i].nome!=undefined){
+		        				$("#categoria").append('<option value="'+data["categorias"][i].id_categoria+'">'+data["categorias"][i].nome+'</option>');
+		        			}
+		        		}
+		        		//$("#selectError2").append('<option>'+"teste"+'</option>');
+		        		
+		        		$("#selectError2").trigger("liszt:updated");
+		        		$("#selectError2").chosen();
+		        		$("#fabrica_select").trigger("liszt:updated");
+		        		$("#fabrica_select").chosen();
+		        		$("#categoria").trigger("liszt:updated");
+		        		$("#categoria").chosen();
+		        		$('.row-fluid').height($('.row-fluid').height+ 100);
+			        },
+			        error: function(data){
+					 	console.log(data);
+			        }
+
+		});
+		$( "#dialog" ).dialog();
+	 
+	});
+	
+	 </script>
 </html>
