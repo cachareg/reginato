@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <link rel="canonical" href="https://github.com/dbrekalo/fastselect/"/>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://rawgit.com/dbrekalo/attire/master/dist/css/build.min.css">
+        <script src="https://rawgit.com/dbrekalo/attire/master/dist/js/build.min.js"></script>
+        <link rel="stylesheet" href="dist/fastselect.min.css">
+        <script src="dist/fastselect.standalone.js"></script>
+        <style>
+
+            .fstElement { font-size: 1.2em; }
+            .fstToggleBtn { min-width: 16.5em; }
+
+            .submitBtn { display: none; }
+
+            .fstMultipleMode { display: block; }
+            .fstMultipleMode .fstControls { width: 100%; }
+
+        </style>
+
+    </head>
+<body>
+
+        <form action="">
+
+            <select class="singleSelectGrouped" name="language">
+                
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="Albania">Albania</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="Andorra">Andorra</option>
+                    <option value="Angola">Angola</option>
+                    <option value="Antigua &amp; Deps">Antigua &amp; Deps</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Azerbaijan">Azerbaijan</option>        
+                    <option value="Bahamas">Bahamas</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Barbados">Barbados</option>
+                    <option value="Belarus">Belarus</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Belize">Belize</option>
+                    <option value="Benin">Benin</option>
+                    <option value="Bhutan">Bhutan</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Bosnia Herzegovina">Bosnia Herzegovina</option>
+                    <option value="Botswana">Botswana</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Brunei">Brunei</option>
+                    <option value="Bulgaria">Bulgaria</option>
+                    <option value="Burkina">Burkina</option>
+                    <option value="Burundi">Burundi</option>
+                
+            </select>
+            <script>
+
+                $('.singleSelectGrouped').fastselect();
+
+            </script>
+            <script>
+    jQuery.noConflict();
+    $( "#dialog" ).dialog({
+            autoOpen: false,
+            width: 400,
+            buttons: [
+                {
+                    text: "Salvar",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                        console.log($(this).children());
+                    }
+                },
+                {
+                    text: "Cancelar",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            ]
+        });
+    </script>
+
+        </form>
+
+</body>
+
+</html>
