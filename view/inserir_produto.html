@@ -1,103 +1,183 @@
+<html>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-	
-	<!-- start: Meta -->
-	<meta charset="utf-8">
-	<title>SimpliQ - Flat & Responsive Bootstrap Admin Template</title>
+	<meta name="author" content="Łukasz Holeczek">
+	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<meta name="description" content="SimpliQ - Flat & Responsive Bootstrap Admin Template.">
 	<meta name="author" content="Łukasz Holeczek">
 	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- end: Meta -->
-	
-	<!-- start: Mobile Specific -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- end: Mobile Specific -->
-	
-	<!-- start: CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link href="css/style.min.css" rel="stylesheet">
-	<link href="css/style-responsive.min.css" rel="stylesheet">
-	<link href="css/retina.css" rel="stylesheet">
-	<!-- end: CSS -->
-	
 
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<link id="ie-style" href="css/ie.css" rel="stylesheet">
-	<![endif]-->
-	
-	<!--[if IE 9]>
-		<link id="ie9style" href="css/ie9.css" rel="stylesheet">
-	<![endif]-->
-	
-	<!-- start: Favicon and Touch Icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-	<link rel="shortcut icon" href="ico/favicon.png">
-	<!-- end: Favicon and Touch Icons -->	
-	
+<meta charset="utf-8">
+<link href="css/style.min.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="css/style-responsive.min.css" rel="stylesheet">
+<link href="css/retina.css" rel="stylesheet">
+<link rel="stylesheet" href="dist/build.min.css">
+<link rel="stylesheet" href="css/fastselect.min.css">
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/jquery-ui.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.12.4.min.js">$.noConflict();</script>
+<script src="dist/build.min.js">$.noConflict();</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">$.noConflict();</script>
+<link rel="canonical" href="https://github.com/dbrekalo/fastselect/"/>
 
+        <script src="js/fastselect.standalone.js"></script>
+
+        <style>
+        .selecionada{
+			border-color: gold;
+			border-style:dashed;
+			border-width: 4px;
+		}
+
+            .fstElement { font-size: 1.2em; }
+            .fstToggleBtn { min-width: 16.5em; }
+
+            .submitBtn { display: none; }
+
+            .fstMultipleMode { display: block; }
+            .fstMultipleMode .fstControls { width: 100%; }
+
+        </style>
+
+        <style>
+	.loader {
+	 clear: left; float: left; position: relative; left: 50%; 
+	  border: 16px solid #f3f3f3;
+	  border-radius: 50%;
+	  border-bottom: 14px solid silver;
+	  width: 30px;
+	  height: 30px;
+	  opacity: 0.5;
+
+		  -webkit-animation: spin 2s linear infinite;
+		  animation: spin 2s linear infinite;
+		}
+
+		@-webkit-keyframes spin {
+		  0% { -webkit-transform: rotate(0deg); }
+		  100% { -webkit-transform: rotate(360deg); }
+		}
+
+		@keyframes spin {
+		  0% { transform: rotate(0deg); }
+		  100% { transform: rotate(360deg); }
+		}
+		.loader2 {
+			  border: 16px solid #f3f3f3;
+			  border-radius: 50%;
+			  border-top: 16px solid #3498db;
+			  position: fixed;
+			  left:30%;
+			  top: 30%;
+			  width: 120px;
+			  height: 120px;
+			  
+			  -webkit-animation: spin 2s linear infinite;
+			  animation: spin 2s linear infinite;
+			}
+
+			@-webkit-keyframes spin {
+			  0% { -webkit-transform: rotate(0deg); }
+			  100% { -webkit-transform: rotate(360deg); }
+			}
+
+			@keyframes spin {
+			  0% { transform: rotate(0deg); }
+			  100% { transform: rotate(360deg); }
+			}
+			</style>
+        
+     <div id="dialog" style="display:none; overflow:hidden" title="Selecione" >
+		
+	</div>
+	<div id="dialog2" style="display:none; overflow:hidden" >
+		
+	</div>
+	<script>
+		function excluir(id){
+			var tableCarSize= $($("#tabela_caracteristicas").find("thead")[0]).find("tr").length;
+			for(var i=1;i<tableCarSize;i++){
+				if($($($("#tabela_caracteristicas").find("thead")[0]).find("tr")[i]).attr('id')==id){
+					$($($("#tabela_caracteristicas").find("thead")[0]).find("tr")[i]).empty();
+				}
+			}
+		}
+		var deletar = [];
+		function excluirCat(id){
+			var tableCatSize= $($("#tabela_categorias").find("thead")[0]).find("tr").length;
+			for(var i=1;i<tableCatSize;i++){
+				var current=$($($("#tabela_categorias").find("thead")[0]).find("tr")[i]); 
+				
+				if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).hasClass("sub")==false){
+					console.log("não");
+					console.log(current);
+					if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).attr('id')==id){				
+						deletar.push($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]));
+					}
+				}else{
+					console.log("comsub");
+					console.log(current);
+					for(var j=1;j<tableCatSize;j++){
+						if($($($("#tabela_categorias").find("thead")[0]).find("tr")[j]).hasClass("sub")){
+							if(sub_cat[$($($("#tabela_categorias").find("thead")[0]).find("tr")[j]).attr("id")] == id){
+								deletar.push($($($("#tabela_categorias").find("thead")[0]).find("tr")[j]));
+							}
+						}
+					}
+				}
+			}
+			for(var i=0;i<deletar.length;i++){
+				deletar[i].remove();
+
+			}
+		}
+		function excluirSub(id){
+			var tableCatSize= $($("#tabela_categorias").find("thead")[0]).find("tr").length;
+			for(var i=1;i<tableCatSize;i++){
+				var current =$($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).attr('id'); 
+				if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).hasClass("sub")){
+					if(current==id){
+						$($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).remove();
+					}
+				}
+			}
+		}
+	</script>
 </head>
+<body>
+	<div class="row-fluid" id="content" height="400"  >		
+		<div class="box span12" height="400" >
+			<div class="box-header" data-original-title >
+				<h2><i class="icon-user"></i><span class="break"></span>Novo</h2>
+			</div>
 
-<body >
-
-	<div id="inserir_produto" >
-
-			<div class="row-fluid" >		
-				<div class="box span12">
-					<div class="box-header" data-original-title >
-							<h2><i class="icon-user"></i><span class="break"></span>Novo</h2>
+			<div class="box-content" height="400">		
+				<form class="form-horizontal" height="400">
+					<div class="loader" id="ext_loader"></div>
+					<fieldset id="campos" style="display:none">
+					<div class="control-group">
+						
+						<div class="controls">
+							<label> Nome</label>
+							<input input class="input-xlarge focused" id="nome" type="text" value=""></input>
+							
+						</div>
 					</div>
 
-					<div class="box-content" >
-
-						<form class="form-horizontal" >
-
-							<fieldset id="campos">
-
-
-								<div class="control-group">
-									<label class="control-label" for="focusedInput">Nome </label>
-									<div class="controls">
-								  		<input class="input-xlarge focused" id="nome" type="text" value="">
-									</div>
-								</div>		
-								<div class="control-group">
-									<label class="control-label" for="focusedInput">Adicionar Fotos </label>
-									<div class="controls" >
-										<!--<input type="file" onchange="savePics()" id="arquivos" name="files" multiple="" /> -->
-
-											<input type="file" id="arquivos" onchange="loadname(this,'previewimg')" name="files" webkitdirectory multiple />
-											<ul id="listing"></ul>
-											<table class="fotos" width="600" style="display:inline">
-
-											</table>
-											<div id="trashFotos"  style="display:none"><a class="btn btn-danger" id="exclude" height="40" width="40"><i class="icon-trash " height="40" width="40"></i> </a> </div>
-									</div>
-									
-								</div>	
-							 	<div class="control-group">
-								<label class="control-label" for="selectError">Fábrica</label>
-
-								<div class="controls">
-								  <select id="fabrica_select" data-rel="chosen">
-								  </select>	
-								
-							  	</div>
-							  </div>
-							  <div class="control-group">
+					<div class="control-group">
+						<div class="controls">
+							<label>Fábrica</label>
+							<select class="singleSelectGrouped" id="fabrica_select" name="language">
+			                    
+		           			</select>
+						</div>
+					</div>
+					<div class="control-group">
 							  <div class="controls">
 								  <label class="checkbox inline">
 									<input type="checkbox" id="inlineCheckbox2" class="lanc" value="option5"> Lançamento</input>
@@ -107,27 +187,28 @@
 								  </label>
 								</div>	
 								</div>
-								<div class="control-group">
-									<label class="control-label" for="selectError">Categoria</label>
-
-									<div class="controls">
-									  <select id="categoria" data-rel="chosen">
-										
-									  </select>	
-									  <button class="btn"  onclick="addRowCat()" type="button">OK</button>
-									</div>
-								</div>
-								
-								<div  class="row-fluid" id="tabela" style="  float:inherit; marging-top:20px; padding-top:20px; display: none">
+					<div class="control-group">
+						<div class="controls" id="cat_controls">
+							<label>Categoria</label>
+							<select class="singleSelectGrouped" id="categorias_select" name="language">
+			                    
+		           			</select>
+		           			<button class="btn" style="height:46px;" onclick="addRowCat()" type="button">OK</button>
+		           			<label>Subcategoria</label>
+							<select class="singleSelectGrouped" id="subcategorias_select" name="language">
+			                    
+		           			</select>
+		           			<button class="btn" style="height:46px;" onclick="addRowSub()" type="button">OK</button>
+		           			<div  class="row-fluid" id="tabela" style="  float:inherit; marging-top:20px; padding-top:20px; display: none">
 									<div class="box span6">
 										<div class="box-header">
-											<h2><i class="icon-align-justify"></i><span class="break"></span>Categorias</h2>
+											<h2><i class="icon-align-justify"></i><span class="break"></span>Categorias e Subcategorias</h2>
 										</div>
 										<div class="box-content" >
 											<table class="table" id="tabela_categorias">
 											  <thead>
 												  <tr>
-													  <th>Categoria</th>
+													  <th>Categorias e Subcategorias</th>
 													  <th>Excluir</th>
 													                                    
 												  </tr>
@@ -136,18 +217,18 @@
 											</table>  
 										</div>     
 									</div>
-							  	</div>
-							  	<div class="control-group">
-									<label class="control-label" for="selectError2">Características</label>
-									<div class="controls">
-								  		<select id="selectError2" data-rel="chosen">
-											
-											
-								  		</select>
-								   		<button class="btn"  onclick="addRowCar()" type="button">OK</button>
-									</div>
-								</div>
-									<div  class="row-fluid" id="tabela2" style="  float:inherit; marging-top:20px; padding-top:20px; display: none">
+						</div>
+						</div>
+						
+					</div>
+					<div class="control-group">
+						<div class="controls" id="car_controls">
+							<label>Característica</label>
+							<select class="singleSelectGrouped" id="caracteristica_select" name="language">
+			                    
+		           			</select>
+		           			<button class="btn" style="height:46px;" onclick="addRowCar()" type="button">OK</button>
+		           			<div  class="row-fluid" id="tabela2" style="  float:inherit; marging-top:20px; padding-top:20px; display: none">
 										<div class="box span6">
 											<div class="box-header">
 												<h2><i class="icon-align-justify"></i><span class="break"></span>Características</h2>
@@ -167,51 +248,334 @@
 											</table>  
 										</div>     
 									</div>
+						</div>
+					</div>
+					<div class="control-group">
+						
+						<div class="controls" >
+								<label >Adicionar Fotos </label>
+								<input type="file" id="arquivos" text="ok" onchange="loadname(this,'previewimg')" name="files" webkitdirectory directory multiple />
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+						<table class="fotos" width="600" style="display:inline">
 
-								</div>	
-								<div id="actions" style="clear: left; float: left; position: relative; left: 80%; ">
+						</table>
+						<div id="trashFotos"  style="display:none"><a class="btn btn-danger" id="exclude" height="40" width="40"><i class="icon-trash " height="40" width="40"></i> </a> 
+					</div>
+					<div id="actions" style="clear: left; float: left; position: relative; left: 80%; ">
 									<button id="salvar" type="button"  class="btn btn-primary">Salvar</button>
 									<button type="reset" class="btn">Limpar</button>
 								</div>
-							  </div>
-							
-								
-							</fieldset>
-						</form>
-					</div>
-				</div>
-			</div><!--/span-->
+				</fieldset>
+				</form>
+			</div>
 		</div>
 	</div>
-	
-	<style>
-		.selecionada{
-			border-color: red;
-			border-style:dashed;
-			border-width: 3px;
-		}
-	</style>
+					
+    <script>
 
-	<div id="dialog" style="display:none" title="Selecione" >
-		<img width="50"  class="img" title="prata" height="50" src="http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Alumínino-Branco-Fosco-150x150.jpg"/>
-		<img width="50" class="img" height="50" src="http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Alumínio-Amarelo-150x150.jpg"/>
-		<img width="50" class="img" height="50" src="http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Alumínio-Azul-Metalico-150x150.jpg"/>
-	</div>
+    $("#exclude").click(function(event){
+		var qtd=$(".fotos").find("tr:first td").length;
+		$(".fotos tr").each(function () {
+			var count =0; 
+		    $('td', this).each(function () {
+		       if($(this).children().hasClass("selecionada")){
+		       	
+		       	for(i in ordem){
+		       		if(ordem[i].name==$(this).children().attr("name")){
+		       			ordem.splice(i, 1);
+		       		}
+		       	}
+		       	console.log(ordem);
+		       	$(this).remove();
+		       }
+		       if(count==qtd){
+		       		$("#exclude").hide();
+		       		$(".fotos tr").remove();
+		       }
+		     })
 
-	<script>
-		var index=0;
+		})
+	});
+
+    $("body").on("click", ".img" , function(event){
+			if($(this).hasClass("selecionada")){
+				$(this).removeClass("selecionada");
+			}else{
+				$(this).addClass("selecionada");
+			}
+		});
+    function openCarSF(valor){
+    	$("#dialog").empty();
+    	$( "#dialog" ).append("<h1 class='no-photo' style='display:none' >"+valor+"</h1>");
+    	$( "#dialog" ).append('<label>Valor</label><input id="valor"></input> <button class="btn" onclick="addValor()" type="button">Add</button> ');
+    	$( "#dialog" ).append('<table id="valores"></table>');
+    	$( "#dialog" ).dialog( "open" );
+    }
+    var cont=0;
+    function addValor(){
+    	if($("#valor").val()!=""){
+    		cont++;
+    		$( "#valores" ).append('<tr id=row_'+cont+'><td>'+$("#valor").val()+'</td><td><a class="btn btn-danger" onclick="excluirValor('+cont+')" height="40" width="40"><i class="icon-trash " height="40" width="40"></i> </a></td></tr>');
+    	}
+    }
+    function excluirValor(linha){
+    	var id= ("row_"+linha);
+    	console.log(id);
+    	row= document.getElementById(id);
+    	var table = document.getElementById("valores");
+    	table.deleteRow(row.rowIndex);
+    	cont--;
+    }
+
+    function openCar(valor){
+    		 
+			$("#dialog").empty();
+			$("#dialog").append("<div class='loader' id='int_loader'> </div>");
+			var ja=false;
+			var i=0;
+			console.log("ja peguei : "+jaPeguei);
+			for(var i=0;i< jaPeguei.length; i++ ){
+				if(valor==jaPeguei[i]){
+					console.log("sim");
+					ja=true;
+				}
+			}
+
+			if(!ja){
+				jaPeguei.push(valor);
+				$.ajax({
+				url: "../controllers/cadastros.php",
+		        context: document.body,
+		        data: {action:"getValoresCaracteristica", id:""+valor+""}, 
+		        dataType:'json',
+		        type: "GET",
+		        	success: function(data){
+		        		var fotos= [];
+		        		$( "#dialog" ).append("<h1 style='display:none' >"+valor+"</h1>");
+		        		for(var i=0;i< data.length; i++ ){
+		        			console.log(data[i]);
+		        			if(data[i]!=""){
+		        				fotos[i]= data[i];
+
+		        				$( "#dialog" ).append("<img height='50' class='img' style='margin-right:3px;' title='"+data[i].hint+"' id='"+data[i].id_foto+"' width='50' src='"+data[i].caminho+"'/>");
+		        			}
+		        		}
+		        		caracteristicas_valores.push(fotos);
+		        		$("#int_loader").hide();
+		        	},
+		        	error: function(data){
+					 	console.log(data);
+			        }
+		        });
+
+			}else{
+				console.log("valor = "+valor);
+				$( "#dialog" ).append("<h1 style='display:none' >"+valor+"</h1>");
+				
+				for(var i=0;i< caracteristicas_valores.length; i++ ){
+
+					for(var j=0;j<caracteristicas_valores[i].length;j++){
+						console.log("j = "+j);
+						var sel=false;
+						if(selecionadas_car[valor].length!= undefined){
+							for(var k=0; k< selecionadas_car[valor].length; k++){
+
+								var img = $("<img height='50' class='img' style='margin-right:3px;' title='"+caracteristicas_valores[i][j].hint+"' id='"+caracteristicas_valores[i][j].id_foto+"' width='50' src='"+caracteristicas_valores[i][j].caminho+"'/>");
+								if(selecionadas_car[valor][k].attr("src")==img.attr("src")){
+									sel=true;
+								}
+							}
+						}
+						if(sel){
+							var img = $("<img height='50' class='img' style='margin-right:3px;' title='"+caracteristicas_valores[i][j].hint+"' id='"+caracteristicas_valores[i][j].id_foto+"' width='50' src='"+caracteristicas_valores[i][j].caminho+"'/>");
+							$( "#dialog" ).append(img);
+							img.addClass("selecionada");
+						}
+						else{
+							console.log("nao tava");
+							$( "#dialog" ).append("<img height='50' class='img' style='margin-right:3px;' title='"+caracteristicas_valores[i][j].hint+"' id='"+caracteristicas_valores[i][j].id_foto+"' width='50' src='"+caracteristicas_valores[i][j].caminho+"'/>");
+						}
+						
+						$("#int_loader").hide();
+					}
+				}
+			}
+
+			$( "#dialog" ).dialog( "open" );
+		};
+
+    function addRowCar(){
+    		var jaTem=false;
+     		if($("#tabela2").css('display')=='none'){
+
+     			if(!$($("#car_controls :nth-child(2n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected")){
+     				
+     				$("#tabela2").show();
+     			}
+     		}
+     		console.log($($("#car_controls :nth-child(2n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected"));
+     		if(!$($("#car_controls :nth-child(2n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected")){	
+	     		var tableCarSize= $($("#tabela_caracteristicas").find("thead")[0]).find("tr").length;
+				for(var i=1;i<tableCarSize;i++){
+					if($($($("#tabela_caracteristicas").find("thead")[0]).find("tr")[i]).attr('id')==$("#caracteristica_select :selected").val()){
+						jaTem=true;
+					}
+				}
+     			if(!jaTem){
+     				var row;
+     				if($("#caracteristica_select :selected").hasClass("porFoto")){
+     					row= $('<tr id="'+$("#caracteristica_select :selected").val()+'"> <td>'+$("#caracteristica_select :selected").text()+'</td> <td ><a  onclick="excluir('+$("#caracteristica_select :selected").val()+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td><td><a class="btn btn-info"  onclick="openCar('+$("#caracteristica_select :selected").val()+')"><i class="icon-edit "></i></a></td></tr>');
+     				$('#tabela_caracteristicas tr:last').after(row);
+     					row.addClass("porFoto");
+     				}else{
+     					row= $('<tr id="'+$("#caracteristica_select :selected").val()+'"> <td>'+$("#caracteristica_select :selected").text()+'</td> <td ><a  onclick="excluir('+$("#caracteristica_select :selected").val()+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td><td><a class="btn btn-info"  onclick="openCarSF('+$("#caracteristica_select :selected").val()+')"><i class="icon-edit "></i></a></td></tr>');
+     						$('#tabela_caracteristicas tr:last').after(row);
+     				}
+
+     			}
+     		}
+    }
+    function addRowCat(){
+    		var jaTemCat=false;
+     		if($("#tabela").css('display')=='none'){
+
+     			if(!$($("#cat_controls :nth-child(2n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected")){
+     				
+     				$("#tabela").show();
+     			}
+     		}
+     		if(!$($("#cat_controls :nth-child(2n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected")){	
+     			var tableCatSize= $($("#tabela_categorias").find("thead")[0]).find("tr").length;
+     			 	
+ 			 	for(var i=1;i<tableCatSize;i++){
+     				if(!$($($($("#tabela_categorias").find("thead")[0]).find("tr")[i])).hasClass("sub")){
+     					if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).attr('id')==$("#categorias_select :selected").val()){
+							jaTemCat=true;
+						}
+					}
+				}
+     			if(!jaTemCat ){
+     				var row = $('<tr id="'+$("#categorias_select :selected").val()+'"> <td>'+$("#categorias_select :selected").text()+'</td> <td><a onclick="excluirCat('+$("#categorias_select :selected").val()+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
+     				
+     				$('#tabela_categorias tr:last').after(row);
+     				
+     			}
+     		}
+    }
+    var sub_cat =[];
+    function addRowSub(){
+    		var jaTemSub=false;
+    		var jaTemSup= false;
+     		if($("#tabela").css('display')=='none'){
+
+     			if(!$($("#cat_controls :nth-child(5n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected")){
+     				
+     				$("#tabela").show();
+     			}
+     		}
+     		if(!$($("#cat_controls :nth-child(5n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected")){	
+     			var tableCatSize= $($("#tabela_categorias").find("thead")[0]).find("tr").length;
+     			 	
+ 			 	for(var i=1;i<tableCatSize;i++){
+     				if($($($($("#tabela_categorias").find("thead")[0]).find("tr")[i])).hasClass("sub")){
+     					if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).attr('id')==$("#subcategorias_select :selected").val()){
+							console.log("e1");
+							jaTemSub=true;
+						}
+					}else{
+
+						if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).attr('id') == sub_cat[$("#subcategorias_select :selected").val()]){
+							console.log("e2");
+							jaTemSup=true;
+						}
+					}
+				}
+     			if(!jaTemSub){
+     				var row = $('<tr id="'+$("#categorias_select :selected").val()+'"> <td>'+$("#subcategorias_select :selected").text()+'</td> <td><a onclick="excluirSub('+$("#subcategorias_select :selected").val()+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
+     				row.addClass("sub");
+     				$('#tabela_categorias tr:last').after(row);
+     				if(!jaTemSup){
+     					row = $('<tr id="'+sub_cat[$("#subcategorias_select :selected").val()]+'"> <td>'+ categorias[sub_cat[$("#subcategorias_select :selected").val()]]+'</td> <td><a onclick="excluirCat('+sub_cat[$("#subcategorias_select :selected").val()]+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
+     					$('#tabela_categorias tr:last').after(row);
+     				}
+     				
+     			}
+     		}
+    }
+
+    var categorias = [];
+ 
+    $( document ).ready(function() {
+		$.ajax({
+				url: "../controllers/cadastros.php",
+		        context: document.body,
+		        data: "action=getAllCaracteristicasCategoriasFabricas",
+		        dataType:'json',
+		        type: "GET",
+		        	success: function(data){
+		        		for (var i = 0, len = data["categorias"].length; i < len; i++) {
+		        			
+		        			if(data["categorias"][i].nome!=""){
+		        				if(data["categorias"][i].nome!=undefined){
+		        					var option = $('<option value="'+data["categorias"][i].id_categoria+'">'+data["categorias"][i].nome+'</option>');
+		        					categorias[data["categorias"][i].id_categoria]= data["categorias"][i].nome;
+		        					if(data["categorias"][i].subcategoria){
+		        						$("#subcategorias_select").append(option);
+		        						sub_cat[data["categorias"][i].supercategoria]= data["categorias"][i].id_categoria;
+		        					}else{
+		        						$("#categorias_select").append(option);
+		        					}
+		        				}
+		        			}
+		        		}	
+		        		for (var i = 0, len = data["fabricas"].length; i < len; i++) {
+		        			console.log(data["fabricas"][i].nome);
+		        			if(data["fabricas"][i].nome!=undefined){
+		        				$("#fabrica_select").append('<option value="'+data["fabricas"][i].id_fabrica+'">'+data["fabricas"][i].nome+'</option>');
+		        			}
+		        		}
+		        		for (var i = 0, len = data["caracteristicas"].length; i < len; i++) {
+		        			if(data["caracteristicas"][i].nome!=undefined){
+		        				var option = $('<option value="'+data["caracteristicas"][i].id_caracteristica+'">'+data["caracteristicas"][i].nome+'</option>');
+		        				$("#caracteristica_select").append(option);
+		        				if(data["caracteristicas"][i].valoresSelecionadosPorFoto){
+		        					option.addClass("porFoto");
+		        				}
+		        			}
+		        		}
+		        		
+		        		$("#ext_loader").hide();
+						$("#campos").show();
+			        },
+			        error: function(data){
+					 	console.log(data);
+			        }
+
+		});
+		$( "#dialog" ).dialog();
+	 
+	});
+
+                $('.singleSelectGrouped').fastselect();
+
+        var index=0;
 		var list = new Array();
-		var ordem= []; 
+		var ordem= [];
+		var jaPeguei= [];
+		var caracteristicas_valores= [];
+		var selecionadas_car= [];
+		var selecionadas_car_id= [];
 		var j=0;
 		var sem=1;
+
+
 		function loadname(img){ 
 
-			//console.log(this);
 			var isIE = (navigator.appName=="Microsoft Internet Explorer");  
-			//var path = img.value;  
-			//var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase(); 
-			//console.log(path);
-			//console.log(ext); 
+			
 			if($(".fotos tr").length==0){
 				$('.fotos').append('<tr> </tr>');
 			}
@@ -220,7 +584,6 @@
 			for(var i=0; i<img.files.length; i++){
 				
 				if(img.files[i]){
-					//var ext = img.files[i].value.substring(path.lastIndexOf('.') + 1).toLowerCase();
 					var ext= (img.files[i].webkitRelativePath.substring(img.files[i].webkitRelativePath.lastIndexOf('.') + 1).toLowerCase()); 
 					if(ext == "jpg" || ext == "png"){
 						sem=0;
@@ -228,9 +591,7 @@
 						var reader = new FileReader();  
 						
 						j++;
-						//index++;
 			            reader.onload = function(teste) { return function (e) {  
-			            	//console.log(e);
 				            	$('.fotos tr').append('<td> <img src="'+e.target.result+'" name="'+teste.name+'"class="img" height="40" width="40" alt="" /> </td> ');
 				               	ordem.push(teste);
 				              	
@@ -238,164 +599,18 @@
 			        	}(img.files[i]);
 			         	reader.readAsDataURL(img.files[i]);
 				        
-				        
-				        //list.push(img.files[i]);
-				    }
-			        //console.log(list);			
+				    }			
 			    }
 			}
-			//$("#arquivos").val('');
-					
+			$("#arquivos").empty();
+			$("#arquivos").tri
 			$('#exclude').show();
 			$('#trashFotos').css("display", "inline");
 			$('#trashFotos').css("vertical-align", "top");
 			
 		}  
-
-		$("#exclude").click(function(event){
-				var qtd=$(".fotos").find("tr:first td").length;
-				$(".fotos tr").each(function () {
-					var count =0; 
-				    $('td', this).each(function () {
-				       if($(this).children().hasClass("selecionada")){
-				       	
-				       	for(i in ordem){
-				       		//console.log()
-				       		if(ordem[i].name==$(this).children().attr("name")){
-				       			ordem.splice(i, 1);
-				       		}
-				       	}
-				       	console.log(ordem);
-				       	$(this).remove();
-				       }
-				       //console.log(list);
-				       if(count==qtd){
-				       		$("#exclude").hide();
-				       		$(".fotos tr").remove();
-				       }
-				     })
-
-				})
-		});
-		
-		$("#salvar").click(function(event){
-			//alert($('#tabela_categorias tr').length);
-			if($("nome").text=="" || $("pasta").text=="" || $('#tabela_categorias tr').length==1 || $('#tabela_caracteristicas tr').length==1){
-				alert("aqui");
-			}else{
-				var formData = new FormData();
-		        for (var key in ordem) {
-		          	formData.append(key, ordem[key]);
-		        }
-		       	var $select= $("#nome");
-		        formData.append("nome", $("#nome").val());
-		        console.log("nome = "+$("#nome").val());
-		        var $select= $("#fabrica_select");
-		        formData.append("fabrica",$($select.find(":selected")[0]).text());
-		        console.log("fabrica = "+$($select.find(":selected")[0]).text());
-		        console.log($(".lanc")[0].checked);
-		        formData.append("lancamento",$(".lanc")[0].checked);
-		        console.log($(".ativo")[0].checked);
-		        formData.append("ativo",$(".ativo")[0].checked);
-		        
-		        ///var size_categorias =$("#tabela_categorias > tr").length;
-		        var $tableCatSize= $($("#tabela_categorias").find("thead")[0]).find("tr").length;
-		        var $tableCarSize= $($("#tabela_caracteristicas").find("thead")[0]).find("tr").length;
-		        var categorias= [];
-		        var caracteristicas= [];
-		        for(var i=1;i<$tableCatSize;i++){
-		        	categorias[i]= ($($($("#tabela_categorias").find("thead")[0]).find("tr").find("td")[0]).html());
-		        }
-		        formData.append("categorias", categorias);
-		        for(var i=1;i<$tableCarSize;i++){
-		        	caracteristicas[i]= ($($($("#tabela_caracteristicas").find("thead")[0]).find("tr").find("td")[0]).html());
-		        }
-
-		        formData.append("action", "inserirProduto");
-				$.ajax({
-					url: "../controllers/cadastros.php",
-		            type: 'POST',
-		            data:  formData,
-		            success: function (data) {
-	                	console.log(data);
-	            	},
-	            	error: function (data) {
-	                	console.log(data);
-	            	},
-		            cache: false,
-		            contentType: false,
-	            	processData: false
-		    	});	
-		    }
-		});
-		//$('body').on('click', 'a.myclass', function() {
-		$("body").on("click", ".img" , function(event){
-			if($(this).hasClass("selecionada")){
-				$(this).removeClass("selecionada");
-			}else{
-				$(this).addClass("selecionada");
-			}
-		});
-
-		function addRowCat(){
-     		if($("#tabela").css('display')=='none'){
-     			if($("#selectError").val()!= ""){
-     				console.log($("#selectError").val());
-     				$("#tabela").show();
-     			}
-     		}
-     		if($("#selectError").val()!= ""){		
-     			//$('#tabela_categorias > tbody').appendTo('<tr> <td>'+$("#selectError").val()+'</td> <td><a class="btn btn-danger" ><i class="icon-trash "></i> </a></td>');
-     			$('#tabela_categorias tr:last').after('<tr> <td>'+$("#categoria").val()+'</td> <td><a class="btn btn-danger" ><i class="icon-trash "></i> </a></td>');
-     		}
-     	}
-
-     	function addRowCar(){
-     		if($("#tabela2").css('display')=='none'){
-     			if($("#selectError2").val()!= ""){
-     				console.log($("#selectError2").val());
-     				$("#tabela2").show();
-     			}
-     		}
-     		if($("#selectError2").val()!= ""){		
-     			$('#tabela_caracteristicas tr:last').after('<tr> <td>'+$("#selectError2").val()+'</td> <td><a class="btn btn-danger" ><i class="icon-trash "></i> </a> </td><td><a class="btn btn-info" href="#" onclick="openCar()"><i class="icon-edit "></i></a></td></tr>');
-     		}
-     	}
-
-		$( "#dialog" ).dialog({
-			autoOpen: false,
-			width: 400,
-			buttons: [
-				{
-					text: "Salvar",
-					click: function() {
-						$( this ).dialog( "close" );
-						console.log($(this).children());
-					}
-				},
-				{
-					text: "Cancelar",
-					click: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			]
-		});
-
-		// Link to open the dialog
-		function openCar(){
-
-			$( "#dialog" ).dialog( "open" );
-		};
-
-
-	</script>
-	<script src="js/jquery.chosen.min.js"></script>	
-
-
-<!-- start: JavaScript-->
-	<script src="js/jquery-migrate-1.2.1.min.js"></script>	
-		<script src="js/jquery-ui-1.10.3.custom.min.js"></script>	
+        </script>
+		<script src="js/jquery-migrate-1.2.1.min.js"></script>	
 		<script src="js/jquery.ui.touch-punch.js"></script>	
 		<script src="js/modernizr.js"></script>	
 		<script src="js/bootstrap.min.js"></script>	
@@ -403,13 +618,11 @@
 		<script src='js/fullcalendar.min.js'></script>	
 		<script src='js/jquery.dataTables.min.js'></script>
 		<script src="js/excanvas.js"></script>
-	<script src="js/jquery.flot.js"></script>
-	<script src="js/jquery.flot.pie.js"></script>
-	<script src="js/jquery.flot.stack.js"></script>
-	<script src="js/jquery.flot.resize.min.js"></script>
-	<script src="js/jquery.flot.time.js"></script>
-		
-		
+		<script src="js/jquery.flot.js"></script>
+		<script src="js/jquery.flot.pie.js"></script>
+		<script src="js/jquery.flot.stack.js"></script>
+		<script src="js/jquery.flot.resize.min.js"></script>
+		<script src="js/jquery.flot.time.js"></script>	
 		<script src="js/jquery.uniform.min.js"></script>		
 		<script src="js/jquery.cleditor.min.js"></script>	
 		<script src="js/jquery.noty.js"></script>	
@@ -424,75 +637,170 @@
 		<script src="js/jquery.sparkline.min.js"></script>	
 		<script src="js/counter.min.js"></script>	
 		<script src="js/raphael.2.1.0.min.js"></script>
-	<script src="js/justgage.1.0.1.min.js"></script>	
+		<script src="js/justgage.1.0.1.min.js"></script>	
 		<script src="js/jquery.autosize.min.js"></script>	
 		<script src="js/retina.js"></script>
 		<script src="js/jquery.placeholder.min.js"></script>
 		<script src="js/wizard.min.js"></script>
-		<script src="js/core.min.js"></script>	
 		<script src="js/charts.min.js"></script>	
-		<script src="js/custom.min.js"></script>
-	<!-- end: JavaScript-->
-	
-</body>
+		 <script>
+		 	var valoresCarComuns = [];
+		 	function salvarSelecionadas(){
+		 		if($($("#dialog").children().eq(0)).hasClass("no-photo")){
+		 			var valores = [];
+		 			for(var i=0;i<$("#valores").find("tr").length;i++){
+		 				valores.push($($("#valores").find("tr")[i]).find("td").text());
+		 			}
+		 			valoresCarComuns[($("#dialog").children().eq(0).text())] = valores;
+		 			console.log(valoresCarComuns);
 
-	<script>
-	
-	var caracteristicas= [];
+		 		}else{
+			 		car= [];
+			 		car2=[];
+			 		for(var i=1;i<$("#dialog").children().length+1;i++){
+			 			
+			 			if($("#dialog").children().eq(i).hasClass("selecionada")){
+			 				car.push($("#dialog").children().eq(i));
+			 				car2.push($($("#dialog").children().eq(i)).attr("id"));
+			 			}
+			 		}
+			 		selecionadas_car[($("#dialog").children().eq(1).text())] = car;
+			 		selecionadas_car_id[($("#dialog").children().eq(1).text())] = car2;
+			 		console.log(selecionadas_car);
+			 	}
+		 	}
 
-	$( document ).ready(function() {
+		    $( "#dialog" ).dialog({
+					autoOpen: false,
+					width: 400,
+					buttons: [
+						{
+							text: "Salvar",
+							click: function() {
+								salvarSelecionadas();
+								$( this ).dialog( "close" );
+								
+							}
+						},
+						{
+							text: "Cancelar",
+							click: function() {
+								$( this ).dialog( "close" );
+							}
+						}
+					]
+			});
 
-		$.ajax({
-				url: "../controllers/cadastros.php",
-		        context: document.body,
-		        data: "action=getAllCaracteristicasCategoriasFabricas",
-		        dataType:'json',
-		        type: "GET",
-		        	success: function(data){
-		        		console.log(data);
-		        		//$("#selectError2").empty();
-		        		for (var i = 0, len = data["caracteristicas"].length; i < len; i++) {
-		        			console.log(data["caracteristicas"][i].nome);
-		        			if(data["caracteristicas"][i].nome!=""){
-		        				$("#selectError2").append('<option>'+data["caracteristicas"][i].nome+'</option>');
-		        			}
-		        		}	
-		        		for (var i = 0, len = data["fabricas"].length; i < len; i++) {
-		        			console.log(data["fabricas"][i].nome);
-		        			if(data["fabricas"][i].nome!=undefined){
-		        				$("#fabrica_select").append('<option value="'+data["fabricas"][i].id_fabrica+'">'+data["fabricas"][i].nome+'</option>');
-		        			}
-		        		}
-		        		for (var i = 0, len = data["caracteristicas"].length; i < len; i++) {
-		        			//console.log(data["caracteristicas"][i].nome);
-		        			if(data["caracteristicas"][i].nome!=undefined){
-		        				$("#selectError2").append('<option value="'+data["caracteristicas"][i].id_caracteristica+'">'+data["caracteristicas"][i].nome+'</option>');
-		        			}
-		        		}
-		        		for (var i = 0, len = data["categorias"].length; i < len; i++) {
-		        			//console.log(data["caracteristicas"][i].nome);
-		        			if(data["categorias"][i].nome!=undefined){
-		        				$("#categoria").append('<option value="'+data["categorias"][i].id_categoria+'">'+data["categorias"][i].nome+'</option>');
-		        			}
-		        		}
-		        		//$("#selectError2").append('<option>'+"teste"+'</option>');
-		        		
-		        		$("#selectError2").trigger("liszt:updated");
-		        		$("#selectError2").chosen();
-		        		$("#fabrica_select").trigger("liszt:updated");
-		        		$("#fabrica_select").chosen();
-		        		$("#categoria").trigger("liszt:updated");
-		        		$("#categoria").chosen();
-		        		$('.row-fluid').height($('.row-fluid').height+ 100);
-			        },
-			        error: function(data){
-					 	console.log(data);
-			        }
+			$( "#dialog2" ).dialog({
+					autoOpen: false,
+					
+					buttons: [
+						{
+							text: "Ok",
+							click: function() {
+								$( this ).dialog( "close" );
 
+							}
+						}
+					]
+			});
+
+		    $("#salvar").click(function(event){
+		    
+			if($("nome").text=="" || $("#fabrica_select :selected").val()==undefined || $("#tabela_categorias").find("tr").length==0 || $("#tabela_caracteristicas").find("tr").length==0 || ordem.length ==0 ){
+				alert("Informações incompletas");
+
+
+			}else{
+				for(var i=1; i< $("#tabela_caracteristicas").find("tr").length ;i++){
+					if($($("#tabela_caracteristicas").find("tr")[i]).hasClass("porFoto")){
+						if( selecionadas_car[($("#tabela_caracteristicas").find("tr")[i]).id] == undefined){
+							alert("Existem características adicionadas sem nenhum valor informado");
+							return;
+						}
+					}else{
+						if( valoresCarComuns[($("#tabela_caracteristicas").find("tr")[i]).id] == undefined){
+							alert("Existem características adicionadas sem nenhum valor informado");
+							return;
+						}
+					}
+				}
+				$("#content").append("<div class='loader2'> </div>");
+		    	$( "#content" ).css("opacity", "0.5");
+				var formData = new FormData();
+		        for (var key in ordem) {
+		        	console.log("key = "+key+"ordem[key]"+ordem[key] );
+		          	formData.append(key, ordem[key]);
+		        }
+		       	var $select= $("#nome");
+		        formData.append("nome", $("#nome").val());
+		        console.log("nome = "+$("#nome").val());
+		        var $select= $("#fabrica_select");
+		        formData.append("fabrica",$($select.find(":selected")[0]).val());
+		        formData.append("lancamento",$(".lanc")[0].checked);
+		        formData.append("ativo",$(".ativo")[0].checked);
+		        var $tableCatSize= $($("#tabela_categorias").find("thead")[0]).find("tr").length;
+		        var $tableCarSize= $($("#tabela_caracteristicas").find("thead")[0]).find("tr").length;
+		        var categorias= [];
+		        var subcategorias= [];
+		        var caracteristicas= [];
+		        for(var i=1;i<$tableCatSize;i++){
+		        	if(!$($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).hasClass("sub")){
+		        		categorias.push(($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).id);
+		        	}else{
+		        		subcategorias.push(($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).id);
+		        	}
+		        }
+		        var jsonString = JSON.stringify(categorias);
+		        formData.append("categorias", jsonString);
+		        var jsonStr3 = JSON.stringify(subcategorias);
+		        formData.append("subcategorias", jsonStr3);
+		        console.log("subs");
+		        console.log(subcategorias);
+		        console.log("tam = "+ $tableCarSize );
+		        for(var i=1;i<$tableCarSize;i++){
+		        	caracteristicas.push(($($("#tabela_caracteristicas").find("thead")[0]).find("tr")[i]).id);
+		        }
+		        var jsonString2 = JSON.stringify(caracteristicas);
+		        formData.append("caracteristicas", jsonString2);
+		        var jstr = JSON.stringify(valoresCarComuns);
+		       	formData.append("valores",jstr);
+		       	console.log("vals");
+		        console.log(valoresCarComuns);
+		        
+		       	var jstr2 = JSON.stringify(selecionadas_car_id);
+		       	console.log(jstr2);
+		       	formData.append("valoresComFoto",jstr2);
+		        formData.append("action", "inserirProduto");
+				$.ajax({
+					url: "../controllers/cadastros.php",
+		            type: 'POST',
+		            data:  formData,
+		            dataType: 'json',
+		            success: function (data) {
+		            	$("#dialog2" ).empty();
+		            	$("#dialog2").append("<p style='text-align: center; font-size:15' >produto inserido com sucesso</p>")
+	                	$("#dialog2" ).dialog( "open" );
+	                	$(".loader2").hide();
+	                	$("#content").css("opacity", "1");
+
+	                	
+	            	},
+	            	error: function (data) {
+	                	$("#dialog2" ).empty();
+		            	$("#dialog2").append("<p style='text-align: center; font-size:15' >falaha ao inserir produto</p>")
+	                	$("#dialog2" ).dialog( "open" );
+	                	$(".loader2").hide();
+	                	$("#content").css("opacity", "1");
+	            	},
+		            cache: false,
+		            contentType: false,
+	            	processData: false
+		    	});	
+		    }
 		});
-		$( "#dialog" ).dialog();
-	 
-	});
-	
-	 </script>
+			
+		</script>
+		
+<body>
 </html>

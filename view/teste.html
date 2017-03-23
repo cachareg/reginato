@@ -1,1 +1,23 @@
-<object height="1000" type="text/html" data="cadastro_produto.html"></object>
+<html>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js">$.noConflict();</script>
+<body>
+	<script>
+	$( document ).ready(function() {
+		$.ajax({
+			url: "../controllers/cadastros.php",
+		        context: document.body,
+		        data: "action=getAllProdutosAtivos",
+		        dataType:'json',
+		        type: "GET",
+		        	success: function(data){
+		        		console.log(data);
+			        },
+			        error: function(data){
+					 	console.log(data);
+			        },
+		});
+	});
+	</script>
+</body>
+
+</html>

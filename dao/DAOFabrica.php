@@ -7,16 +7,21 @@
 
 			$connection = mysql_connect("localhost", "root", "");
 			mysql_select_db("reginato");
-			//echo "id = "+$id;
 			$sql= "select * FROM Fabrica WHERE id=".$id;
 			$result=mysql_query($sql, $connection);
 			$row = mysql_fetch_object($result);
-			//var_dump($row);
 			$fabrica = new Fabrica();
 			$fabrica->setId($row->id);
 			$fabrica->setNome($row->nome);
 			$fabrica->setAtivo(false);
 			return $fabrica;
+		}
+
+		public function inserirFabrica($fabrica){
+			$connection = mysqli_connect("localhost", "root", "", "reginato");
+            $sql= "insert into fabrica (nome ) values('".$fabrica->getNome()."') ";
+            //echo($sql);
+            return mysqli_query($connection, $sql);
 		}
 
 		public function getAllFabricas(){

@@ -20,20 +20,7 @@
 	<link href="css/style.min.css" rel="stylesheet">
 	<link href="css/style-responsive.min.css" rel="stylesheet">
 	<link href="css/retina.css" rel="stylesheet">
-	<!-- end: CSS -->
 	
-
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<link id="ie-style" href="css/ie.css" rel="stylesheet">
-	<![endif]-->
-	
-	<!--[if IE 9]>
-		<link id="ie9style" href="css/ie9.css" rel="stylesheet">
-	<![endif]-->
-	
-	<!-- start: Favicon and Touch Icons -->
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
@@ -77,7 +64,6 @@
 		        type: "GET",
 		        success: function(data){
 		        	$('#tabela').empty();
-		        	console.log(data[0].nome);
 					for (var i = 0, len = data.length; i < len; i++) {
 						if(data[i].ativo){
 				        	$('#tabela').append('<tr> <td>'+data[i].nome+'</td> <td>'+data[i].fabrica.nome+' </td> <td><span class="label label-success">Active</span></td><td> <a class="btn btn-info" href="#" onclick="openCar()"><i class="icon-edit "></i></a> <a class="btn btn-danger" href="#"><i class="icon-trash "></i> </a></td></tr>');
@@ -91,9 +77,7 @@
 			        }
 
 		    });
-
-			
-		});
+	});
 			//document.getElementsByTagName("html")[0].style.visibility = "visible";
 	</script>
 

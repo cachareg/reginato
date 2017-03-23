@@ -1,5 +1,6 @@
 <?php
 	include "../model/Caracteristica.php";
+    require_once("../model/Foto.php");
 
 	Class DAOCaracteristica{
 
@@ -37,17 +38,14 @@
 				}else{
 					$caracteristica->setValoresSelecionadosPorFoto(false);
 				}
-				//var_dump($caracteristica);
 				array_unshift($caracteristicas, $caracteristica);
 			}
-			//var_dump($caracteristicas);
 			return $caracteristicas;
 		}
 
     public function buildCaracteristica($id){
         $connection = mysqli_connect("localhost", "root", "", "reginato");
         $sql= "select * FROM Caracteristica WHERE id=".$id;
-        //$result=mysqli_query($sql, $connection);
         $result=mysqli_query( $connection, $sql);
         $row = mysqli_fetch_object($result);
         $caracteristica = new Caracteristica();
@@ -58,23 +56,26 @@
         }else{
             $caracteristica->setValoresSelecionadosPorFoto(false);
         }
-
         mysqli_close($connection);
-
         return $caracteristica;
     }
 
     public function getFotos($id){
         $connection = mysqli_connect("localhost", "root", "", "reginato");
         $sql= "select * FROM foto_caracteristica WHERE id_caracteristica=".$id;
-        $caminhos[]=array();
+        $fotos[]=array();
         $url="http://localhost:82/site-reginato-representacao/reginato/fotos/caracteristicas/";
         $result=mysqli_query( $connection, $sql);
+        $foto;
         while ($row = mysqli_fetch_object($result)) {
-            $caminhos.array_unshift($caminhos, $url.$id."/".$row->nome);
+            $foto = new Foto();
+            $foto->setId($row->id_foto);
+            $foto->setCaminho($url.$id."/".$row->nome);
+            $foto->setHint($row->hint);
+            array_unshift($fotos, $foto);
         }
         mysqli_close($connection);
-        return $caminhos;
+        return $fotos;
     }
 
 	static function utf8_code_deep($input, $b_encode = TRUE, $b_entity_replace = TRUE)

@@ -49,9 +49,35 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 	$( function() {
-	$( "#dialog" ).dialog();
+	$( "#dialog2" ).dialog();
 	 } );
 	 </script>
+
+	 <style>
+	 	.loader2 {
+			  border: 16px solid #f3f3f3;
+			  border-radius: 50%;
+			  border-top: 16px solid #3498db;
+			  position: fixed;
+			  left:30%;
+			  top: 30%;
+			  width: 120px;
+			  height: 120px;
+			  
+			  -webkit-animation: spin 2s linear infinite;
+			  animation: spin 2s linear infinite;
+			}
+
+			@-webkit-keyframes spin {
+			  0% { -webkit-transform: rotate(0deg); }
+			  100% { -webkit-transform: rotate(360deg); }
+			}
+
+			@keyframes spin {
+			  0% { transform: rotate(0deg); }
+			  100% { transform: rotate(360deg); }
+			}
+	 </style>
 
 </head>
 
@@ -59,7 +85,7 @@
 
 	<div id="inserir_fabrica" scroll="no" style="display:block; overflow:auto">
 
-			<div class="row-fluid" style=" display:block; overflow:auto">		
+			<div class="row-fluid" id="content" style=" display:block; overflow:auto">		
 				<div class="box span12">
 					<div class="box-header" data-original-title >
 							<h2><i class="icon-user"></i><span class="break"></span>Novo</h2>
@@ -74,11 +100,14 @@
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Nome: </label>
 									<div class="controls">
-								  		<input class="input-xlarge focused" id="focusedInput" type="text" value="">
+								  		<input class="input-xlarge focused" id="nome" type="text" value="">
 									</div>
 								</div>		
 	
-
+								<div id="actions" style="clear: left; float: left; position: relative; left: 80%; ">
+									<button id="salvar" type="button"  class="btn btn-primary">Salvar</button>
+									<button type="reset" class="btn">Limpar</button>
+								</div>
 								
 							</fieldset>
 						</form>
@@ -87,81 +116,7 @@
 			</div><!--/span-->
 		</div>
 	</div>
-	
-	<style>
-		.selecionada{
-			border-color: red;
-			border-style:dashed;
-			border-width: 3px;
-		}
-	</style>
-
-	<div id="dialog" style="display:none" title="Selecione" >
-		<img width="50"  class="img" title="prata" height="50" src="http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Alumínino-Branco-Fosco-150x150.jpg"/>
-		<img width="50" class="img" height="50" src="http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Alumínio-Amarelo-150x150.jpg"/>
-		<img width="50" class="img" height="50" src="http://greenhousemoveis.com.br/wp-content/uploads/2016/06/Alumínio-Azul-Metalico-150x150.jpg"/>
-
-	</div>
-
-	<script>
-
-		$(".img").click(function(event){
-			console.log("Im here");
-			if($(this).hasClass("selecionada")){
-				$(this).removeClass("selecionada");
-			}else{
-				$(this).addClass("selecionada");
-			}
-		});
-
-		function addRowCat(){
-     		if($("#tabela").css('display')=='none'){
-     			if($("#selectError").val()!= ""){
-     				console.log($("#selectError").val());
-     				$("#tabela").show();
-     			}
-     		}
-     		if($("#selectError").val()!= ""){		
-     			$('#tabela_categorias tr:last').after('<tr> <td>'+$("#selectError").val()+'</td> <td><a class="btn btn-danger" href="#"><i class="icon-trash "></i> </a></td>');
-     		}
-     	}
-
-     	function addRowCar(){
-     		if($("#tabela2").css('display')=='none'){
-     			if($("#selectError2").val()!= ""){
-     				console.log($("#selectError2").val());
-     				$("#tabela2").show();
-     			}
-     		}
-     		if($("#selectError2").val()!= ""){		
-     			$('#tabela_caracteristicas tr:last').after('<tr> <td>'+$("#selectError2").val()+'</td> <td><a class="btn btn-danger" href="#"><i class="icon-trash "></i> </a> </td><td><a class="btn btn-info" href="#" onclick="openCar()"><i class="icon-edit "></i></a></td></tr>');
-     		}
-     	}
-
-		$( "#dialog" ).dialog({
-			autoOpen: false,
-			width: 400,
-			buttons: [
-				{
-					text: "Salvar",
-					click: function() {
-						$( this ).dialog( "close" );
-						console.log($(this).children());
-					}
-				},
-				{
-					text: "Cancelar",
-					click: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			]
-		});
-
-		// Link to open the dialog
-		function openCar(){
-			$( "#dialog" ).dialog( "open" );
-		};
+	<div id="dialog2" style="display:none; overflow:hidden" >
 
 
 	</script>
@@ -205,6 +160,59 @@
 		<script src="js/core.min.js"></script>	
 		<script src="js/charts.min.js"></script>	
 		<script src="js/custom.min.js"></script>
+		<script>
+		$("#salvar").click(function(event){
+			if($("#nome").val()==""){
+				$("#dialog2" ).empty();
+		        $("#dialog2").append("<p style='text-align: center; font-size:15' >Insira um nome Válido</p>")
+	            $("#dialog2" ).dialog( "open" );
+	            return;
+			}else{
+				$("#content").append("<div class='loader2'> </div>");
+				var formData = new FormData();
+				formData.append("nome", $("#nome").val());
+				formData.append("action","inserirFabrica");
+				$("#content").append("<div class='loader2'> </div>");
+			    $( "#content" ).css("opacity", "0.5");
+				$.ajax({
+					url: "../controllers/cadastros.php",
+					type: "POST",
+					data: formData,
+			        dataType:'json',
+			        
+			        	success: function(data){
+			        		$("#dialog2" ).empty();
+			            	$("#dialog2").append("<p style='text-align: center; font-size:15' >fábrica inserida com sucesso</p>")
+		                	$("#dialog2" ).dialog( "open" );
+		                	$(".loader2").hide();
+		                	$("#content").css("opacity", "1");
+			        	},
+			        	error: function(data){
+						 	console.log(data);
+				        },
+				        cache: false,
+			            contentType: false,
+		            	processData: false
+			    });
+			}
+		});
+
+		$( "#dialog2" ).dialog({
+					autoOpen: false,
+					
+					buttons: [
+						{
+							text: "Ok",
+							click: function() {
+								$( this ).dialog( "close" );
+								$("#nome").val="";
+
+							}
+						}
+					]
+		});
+
+		</script>
 	<!-- end: JavaScript-->
 	
 </body>
