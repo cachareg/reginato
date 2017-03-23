@@ -778,6 +778,7 @@
 		            data:  formData,
 		            dataType: 'json',
 		            success: function (data) {
+		            	console.log(data);
 		            	$("#dialog2" ).empty();
 		            	$("#dialog2").append("<p style='text-align: center; font-size:15' >produto inserido com sucesso</p>")
 	                	$("#dialog2" ).dialog( "open" );
@@ -787,8 +788,9 @@
 	                	
 	            	},
 	            	error: function (data) {
+	            		console.log(data);
 	                	$("#dialog2" ).empty();
-		            	$("#dialog2").append("<p style='text-align: center; font-size:15' >falaha ao inserir produto</p>")
+		            	$("#dialog2").append("<p style='text-align: center; font-size:15' >falha ao inserir produto</p>")
 	                	$("#dialog2" ).dialog( "open" );
 	                	$(".loader2").hide();
 	                	$("#content").css("opacity", "1");

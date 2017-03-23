@@ -38,15 +38,27 @@
             $fotos = $produto->getFotos();
             foreach ($fotos as $current) {
             	$sql= "insert into foto_produto (nome, id_produto) values('".$current->getCaminho()."', ".$produto->getId().")";
-            	//echo $sql;
+            	echo $sql;
             	mysqli_query($connection, $sql);
             }
             $fotosCaracteristicas = $produto->getFotosCaracteristica();
             foreach ($fotosCaracteristicas as $current) {
             	$sql= "insert into produto_foto_caracteristica (id_foto, id_produto) values(".$current->getId().", ".$produto->getId().")";
+            	mysqli_query($connection, $sql);
+            }
+            mysqli_close($connection);
+            return $produto->getId();
+        }
+
+        public function inserirFotosProduto($produto){
+        	$connection = mysqli_connect("localhost", "root", "", "reginato");
+        	$fotos = $produto->getFotos();
+            foreach ($fotos as $current) {
+            	$sql= "insert into foto_produto (nome, id_produto) values('".$current->getCaminho()."', ".$produto->getId().")";
             	//echo $sql;
             	mysqli_query($connection, $sql);
             }
+            mysqli_close($connection);
         }
 
 
@@ -85,6 +97,7 @@
 					$categoria = new Categoria();
 					$categoria->setNome($row1->nome);
 					$categoria->setId($row1->id);
+					$categoria->setSubcategoria(false);
 					$product->addCategoria($categoria);
 				}
 				
@@ -96,9 +109,16 @@
 					$categoria = new Categoria();
 					$categoria->setNome($row2->nome);
 					$categoria->setId($row2->id);
+					$categoria->setSubcategoria(true);
 					$product->addCategoria($categoria);
 				}
-			    //print_r($product);
+				$sql3= "select nome from foto_produto where id_produto = ".$product->getId();
+				$result4=mysqli_query( $connection, $sql3);
+				
+				while ($row3 = mysqli_fetch_object($result4)) {
+
+					$product->addFoto($row3->nome);
+				}
 			    array_unshift($produtos, $product);
 
 			}

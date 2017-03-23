@@ -78,7 +78,7 @@ if(isset($_POST['action'])) {
     $rett = "";
     $cont=0;
     $vec[]=array();
-    $target_dir = "../fotos/produtos/";
+    
     $produto = new produto();
     $produto->setNome($_POST['nome']);
     $daoF = new DAOFabrica();
@@ -123,7 +123,9 @@ if(isset($_POST['action'])) {
           }
       }
     }
-
+    $produto->setId($id = $daoP->inserirProduto($produto));
+    mkdir("../fotos/produtos/".$id."/");
+    $target_dir = "../fotos/produtos/".$id."/";
     while($log){
       if(isset($_FILES[$cont])){
         $target_file = $target_dir . basename($_FILES[$cont]["name"]);
@@ -140,6 +142,7 @@ if(isset($_POST['action'])) {
         $log=False;
       }
     }
-    $daoP->inserirProduto($produto);
+    $daoP->inserirFotosProduto($produto);
+    
 }   
 }
