@@ -78,18 +78,17 @@ INSERT INTO `categoria` (`id`, `nome`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fabrica` (
+  `nome` varchar(100) NOT NULL,
   `id` bigint(20) NOT NULL,
-  `nome` varchar(100) NOT NULL
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `fabrica`
 --
 
-INSERT INTO `fabrica` (`id`, `nome`) VALUES
-(1, 'Green House'),
-(0, 'Tissot'),
-(0, 'Tissot');
+INSERT INTO `fabrica` (`nome`, `id`) VALUES
+('Tissot', 0);
 
 -- --------------------------------------------------------
 
