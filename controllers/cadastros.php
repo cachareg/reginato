@@ -14,6 +14,13 @@ if(isset($_GET['action'])) {
 	    $produtos = $dao->getAllProdutos(null, null);
 		  echo json_encode($produtos);
     }
+    if($_GET['action'] == 'getCaracteristicasProduto') {
+      $id_produto= intval(json_decode($_GET['id']));
+      $dao = new DAOProduto();
+      $produto = $dao->getCaracteristicasProduto($id_produto);
+      echo json_encode(DAOCaracteristica::utf8_code_deep($produto));
+    }
+
     if($_GET['action'] == 'getAllProdutosAtivos') {    	
    		$dao = new DAOProduto();
    		$produtos = $dao->getAllProdutos();
