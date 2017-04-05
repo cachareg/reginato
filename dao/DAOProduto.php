@@ -69,6 +69,17 @@
 			$result=mysqli_query($connection, $sql);
 			$row = mysqli_fetch_object($result);
 			$product->nome= $row->nome;
+			$sql= "select * from foto_produto where id_produto=". $id;
+			$result = mysqli_query($connection, $sql);
+			$row = mysqli_fetch_object($result);
+			While($row= mysqli_fetch_object($result)){
+				$foto = new Foto();
+				$foto->setId($row->id_foto);
+				$foto->setCaminho($row->nome);
+				$product->addFoto($foto);
+			}
+
+
         	$sql = "select caracteristica.id as id_car, caracteristica.nome as nome_car, caracteristica.valoresSelecionadosPorFoto as por_foto from produto_caracteristica join caracteristica on (produto_caracteristica.id_caracteristica = caracteristica.id) where produto_caracteristica.id_produto =".$id;
         	$result=mysqli_query($connection, $sql);
         	while ($row = mysqli_fetch_object($result)) {
@@ -86,6 +97,7 @@
 			    while ($row2 = mysqli_fetch_object($result2)) {
 			    	$valor = new Valor();
 			    	$valor->setNome($row2->nome);
+			    	$valor->setId($row2->id);
 			    	$caracteristica->addValor($valor);
 			    }
 			    $sql = "select * from produto_foto_caracteristica join foto_caracteristica on (produto_foto_caracteristica.id_foto=foto_caracteristica.id_foto) where id_produto = ".$id;
@@ -94,6 +106,7 @@
 			    	$foto_carac= new FotoCaracteristica();
 			    	$foto_carac->setNome($row3->nome);
 			    	$foto_carac->setHint($row3->hint);
+			    	$foto_carac->setId($row3->id_foto);
 			    	$caracteristica->addFoto($foto_carac);
 			    }
 			    $product->addCaracteristica($caracteristica);
