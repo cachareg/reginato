@@ -69,10 +69,10 @@
 			$result=mysqli_query($connection, $sql);
 			$row = mysqli_fetch_object($result);
 			$product->nome= $row->nome;
-			$sql= "select * from foto_produto where id_produto=". $id;
+			$sql= "select * from foto_produto where id_produto=". $id. " ";
 			$result = mysqli_query($connection, $sql);
-			$row = mysqli_fetch_object($result);
-			While($row= mysqli_fetch_object($result)){
+
+			while($row= mysqli_fetch_object($result)){
 				$foto = new Foto();
 				$foto->setId($row->id_foto);
 				$foto->setCaminho($row->nome);
