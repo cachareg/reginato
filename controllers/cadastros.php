@@ -9,6 +9,13 @@ require_once("../model/Valor.php");
 require_once("../model/FotoCaracteristica.php");
 
 if(isset($_GET['action'])) {
+
+    if($_GET['action'] == 'getAllCategories'){
+      $dao = new DAOCategoria();
+      $categorias = $dao->getAllCategorias();
+      echo json_encode(DAOCaracteristica::utf8_code_deep($categorias));    
+    }
+
     if($_GET['action'] == 'getAllProdutos') {
 	    $dao = new DAOProduto();
 	    $produtos = $dao->getAllProdutos(null, null);

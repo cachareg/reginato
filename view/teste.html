@@ -6,7 +6,7 @@
 		$.ajax({
 			url: "../controllers/cadastros.php",
 		        context: document.body,
-		        data: {action:"getCaracteristicasProduto", id:""+196+""},
+		        data: "action=getAllCategories",
 		        dataType:'json',
 		        type: "GET",
 		        	success: function(data){
