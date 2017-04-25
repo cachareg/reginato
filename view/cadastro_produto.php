@@ -5,9 +5,9 @@
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title></title>
-	<meta name="description" content="SimpliQ - Flat & Responsive Bootstrap Admin Template.">
-	<meta name="author" content="Łukasz Holeczek">
-	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="keyword" content="">
 	<!-- end: Meta -->
 	
 	<!-- start: Mobile Specific -->
@@ -66,7 +66,7 @@
 		        	$('#tabela').empty();
 					for (var i = 0, len = data.length; i < len; i++) {
 						if(data[i].ativo){
-				        	$('#tabela').append('<tr> <td>'+data[i].nome+'</td> <td>'+data[i].fabrica.nome+' </td> <td><span class="label label-success">Active</span></td><td> <a class="btn btn-info" href="#" onclick="openCar()"><i class="icon-edit "></i></a> <a class="btn btn-danger" href="#"><i class="icon-trash "></i> </a></td></tr>');
+				        	$('#tabela').append('<tr id='+data[i].id_produto+'> <td>'+data[i].nome+'</td> <td>'+data[i].fabrica.nome+' </td> <td><span class="label label-success">Active</span></td><td> <a class="btn btn-info" href="#" onclick="openCar()"><i class="icon-edit "></i></a> <a  objectId='+data[i].id_produto+' class="btn btn-danger delete" ><i class="icon-trash "></i> </a></td></tr>');
 				    	}
 				    }
 					    $("#tab").show();
@@ -78,7 +78,7 @@
 
 		    });
 	});
-			//document.getElementsByTagName("html")[0].style.visibility = "visible";
+			
 	</script>
 
 </head>
@@ -153,6 +153,24 @@
     		var Folder = path.split("/");
     		alert(Folder[3]);
 		}
+
+		$(' body').on('click', ".delete", function(event){
+			//console.log($(this));
+			$("#"+$(this).attr("objectId")).remove();
+			$.ajax({
+				url: "../controllers/cadastros.php",
+		        data: {action:"removerProduto", id:$(this).attr("objectId")},
+		        type: "POST",
+		        success: function(data){
+		        		alert("produto excluido");
+			        },
+			        error: function(data){
+					 	console.log(data);
+			        }
+
+		    });
+		});;
+		
 
 
 	</script>
