@@ -32,11 +32,11 @@ if(isset($_GET['action'])) {
    		$dao = new DAOProduto();
    		$produtos = $dao->getAllProdutos();
    		
-   		for($i=0;$i<sizeof($produtos); $i++){
-   			if($produtos[$i]->getAtivo()==0){
-   				unset($produtos[$i]);
-   			}
-   		}
+   		// for($i=0;$i<sizeof($produtos); $i++){
+   		// 	if($produtos[$i]->getAtivo()==0){
+   		// 		unset($produtos[$i]);
+   		// 	}
+   		// }
    		echo json_encode($produtos);
     }
     if($_GET['action'] == 'getAllCaracteristicasCategoriasFabricas') {
