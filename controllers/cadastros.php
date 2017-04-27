@@ -16,6 +16,7 @@ if(isset($_GET['action'])) {
       echo json_encode(DAOCaracteristica::utf8_code_deep($categorias));    
     }
 
+
     if($_GET['action'] == 'getAllProdutos') {
 	    $dao = new DAOProduto();
 	    $produtos = $dao->getAllProdutos(null, null);
@@ -75,13 +76,25 @@ if(isset($_POST['action'])) {
     $daoF->inserirFabrica($fabrica);
   }
 
+  if($_POST['action'] == 'removerProduto') {
+    $id = $_POST['id'];
+    $dao = new DAOProduto();
+    $dao->removerProduto($id);
+    $dir= "../fotos/produtos/".$id;
+    $files = array_diff(scandir($dir), array('.','..')); 
+    foreach ($files as $file) { 
+      (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
+    } 
+    rmdir($dir); 
+  }
+
   if($_POST['action'] == 'inserirCategoria') {
     $categoria = new Categoria();
     $categoria->setNome($_POST['nome']);
     $subcategorias = json_decode(($_POST['subcategorias']));
 
     $daoC = new DaoCategoria();
-    $daoC->inserirCategoria($categoria);
+    //$daoC->inserirCategoria($categoria);
     $categoria->setId($daoC->inserirCategoria($categoria));
     $daoC->inserirSubcategoria($subcategorias, $categoria->getId());
     

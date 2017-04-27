@@ -44,7 +44,7 @@
 			$connection = mysqli_connect("localhost", "root", "", "reginato");
 			for($i=0;$i<sizeof($subcategorias); $i++){
 				$sql= "insert into subcategoria (nome, id_categoria ) values('".$subcategorias[$i]."', ".$id_categoria.") ";
-				echo ($sql);
+				//echo ($sql);
 				mysqli_query($connection, $sql);
 			}
 			mysqli_close($connection); 

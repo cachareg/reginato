@@ -7,6 +7,21 @@
 
 	Class DAOProduto{
 
+
+		public function removerProduto($id){
+			$connection = mysqli_connect("localhost", "root", "", "reginato");
+			$sql= "delete from produto where id = ". $id;
+			//echo $sql;
+			mysqli_query($connection, $sql);
+			$sql= "delete from valor where id_produto = ". $id;
+			//echo $sql;
+			mysqli_query($connection, $sql);
+			$sql= "delete from foto_produto where id_produto = ". $id;
+			//echo $sql;
+			mysqli_query($connection, $sql);
+			
+		}
+
 		public function inserirProduto($produto){
             $connection = mysqli_connect("localhost", "root", "", "reginato");
             $sql= "insert into produto (nome, lancamento, ativo, id_fabrica) values('".$produto->getNome()."', ".$produto->getLancamento().", ".$produto->getAtivo().", ".$produto->getFabrica()->getId().")";

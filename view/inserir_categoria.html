@@ -95,7 +95,7 @@
 
 					<div class="box-content" >
 
-						<form class="form-horizontal" >
+						<form class="form-horizontal" id="form">
 
 							<fieldset id="campos">
 
@@ -138,7 +138,7 @@
 	
 								<div id="actions" style="clear: left; float: left; position: relative; left: 80%; ">
 									<button id="salvar" type="button"  class="btn btn-primary">Salvar</button>
-									<button type="reset" class="btn">Limpar</button>
+									<button type="reset" id="reset" class="btn">Limpar</button>
 								</div>
 								</div>
 							</fieldset>
@@ -197,6 +197,11 @@
 			$(".dashboard-list").append("<li id='nome'>"+$("#subcategoria").val()+" </li>");
 		}
 
+		$("#reset").click(function(event){
+			$("#subcategorias").remove();
+			console.log("aham");
+		});
+
 		$("#salvar").click(function(event){
 			if($("#nome").val()==""){
 				$("#dialog2" ).empty();
@@ -228,6 +233,10 @@
 		                	$("#dialog2" ).dialog( "open" );
 		                	$(".loader2").hide();
 		                	$("#content").css("opacity", "1");
+		                	$("#nome").val("");
+		                	$("#subcategoria").val("");
+		                	$("#subcategorias li").remove();
+
 			        	},
 			        	error: function(data){
 						 	console.log(data);
