@@ -114,18 +114,23 @@
 				var current=$($($("#tabela_categorias").find("thead")[0]).find("tr")[i]); 
 				
 				if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).hasClass("sub")==false){
-					console.log("não");
-					console.log(current);
+					//console.log("não");
+					//console.log(current);
 					if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).attr('id')==id){				
 						deletar.push($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]));
 					}
 				}else{
-					console.log("comsub");
-					console.log(current);
+					//console.log("comsub");
+					//console.log(current);
 					for(var j=1;j<tableCatSize;j++){
-						if($($($("#tabela_categorias").find("thead")[0]).find("tr")[j]).hasClass("sub")){
-							if(sub_cat[$($($("#tabela_categorias").find("thead")[0]).find("tr")[j]).attr("id")] == id){
-								deletar.push($($($("#tabela_categorias").find("thead")[0]).find("tr")[j]));
+						var x = $($($("#tabela_categorias").find("thead")[0]).find("tr")[j]);
+						console.log(x.attr("id"));
+						console.log(x.hasClass("sub"));
+						if(x.hasClass("sub")){
+							console.log("entrei");
+							if(cat_sub[x.attr("id")]==id){
+								deletar.push(x);
+								console.log("isadhfkadfkoadsjf");
 							}
 						}
 					}
@@ -440,6 +445,7 @@
     }
     function addRowCat(){
     		var jaTemCat=false;
+
      		if($("#tabela").css('display')=='none'){
 
      			if(!$($("#cat_controls :nth-child(2n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected")){
@@ -469,6 +475,7 @@
     function addRowSub(){
     		var jaTemSub=false;
     		var jaTemSup= false;
+    		console.log("yes");
      		if($("#tabela").css('display')=='none'){
 
      			if(!$($("#cat_controls :nth-child(5n)")[0]).hasClass("fstElement fstSingleMode fstNoneSelected")){
@@ -494,11 +501,14 @@
 					}
 				}
      			if(!jaTemSub){
-     				var row = $('<tr id="'+$("#categorias_select :selected").val()+'"> <td>'+$("#subcategorias_select :selected").text()+'</td> <td><a onclick="excluirSub('+$("#subcategorias_select :selected").val()+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
+     				var row = $('<tr id="'+$("#subcategorias_select :selected").val()+'"> <td>'+$("#subcategorias_select :selected").text()+'</td> <td><a onclick="excluirSub('+$("#subcategorias_select :selected").val()+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
      				row.addClass("sub");
+     				console.log("what?");
      				$('#tabela_categorias tr:last').after(row);
      				if(!jaTemSup){
-     					row = $('<tr id="'+sub_cat[$("#subcategorias_select :selected").val()]+'"> <td>'+ categorias[sub_cat[$("#subcategorias_select :selected").val()]]+'</td> <td><a onclick="excluirCat('+sub_cat[$("#subcategorias_select :selected").val()]+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
+     					//console.log(categorias);
+     					
+     					row = $('<tr id="'+cat_sub[$("#subcategorias_select :selected").val()]+'"> <td>'+ categorias[cat_sub[$("#subcategorias_select :selected").val()]]+'</td> <td><a onclick="excluirCat('+cat_sub[$("#subcategorias_select :selected").val()]+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
      					$('#tabela_categorias tr:last').after(row);
      				}
      				
@@ -507,6 +517,7 @@
     }
 
     var categorias = [];
+    var cat_sub=[];
  
     $( document ).ready(function() {
 		$.ajax({
@@ -516,15 +527,24 @@
 		        dataType:'json',
 		        type: "GET",
 		        	success: function(data){
+		        		//console.log(data["categorias"]);
 		        		for (var i = 0, len = data["categorias"].length; i < len; i++) {
 		        			
 		        			if(data["categorias"][i].nome!=""){
 		        				if(data["categorias"][i].nome!=undefined){
-		        					var option = $('<option value="'+data["categorias"][i].id_categoria+'">'+data["categorias"][i].nome+'</option>');
+		        					var option = $('<option  value="'+data["categorias"][i].id_categoria+'">'+data["categorias"][i].nome+'</option>');
+		        					//console.log(data["categorias"][i].id_categoria);
 		        					categorias[data["categorias"][i].id_categoria]= data["categorias"][i].nome;
+		        					//console.log(categorias[data["categorias"][i].id_categoria]);
+		        					console.log(data["categorias"][i]);
 		        					if(data["categorias"][i].subcategoria){
 		        						$("#subcategorias_select").append(option);
-		        						sub_cat[data["categorias"][i].supercategoria]= data["categorias"][i].id_categoria;
+		        						//console.log(data["categorias"][i].supercategoria);
+		        						console.log(data["categorias"][i].id_categoria);
+		        						console.log(data["categorias"][i]["superCategoria"]);
+
+		        						cat_sub[data["categorias"][i].id_categoria] = data["categorias"][i].superCategoria;
+		        						sub_cat[data["categorias"][i].superCategoria]= data["categorias"][i].id_categoria;
 		        					}else{
 		        						$("#categorias_select").append(option);
 		        					}

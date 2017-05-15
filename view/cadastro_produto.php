@@ -28,7 +28,7 @@
 	<link rel="shortcut icon" href="ico/favicon.png">
 	<!-- end: Favicon and Touch Icons -->	
 	<script src="js/jquery-1.10.2.min.js"></script> 
-	
+	<script src='https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css'></script>
 	<style>
 	.loader {
 	 clear: left; float: left; position: relative; left: 50%; 
@@ -53,38 +53,13 @@
   100% { transform: rotate(360deg); }
 }
 	</style>
+	
+	<!-- end: JavaScript-->
+		
 
-	<script>
-	$(document).ready(function (){
-		$.ajax({
-				url: "../controllers/cadastros.php",
-		        context: document.body,
-		        data: "action=getAllProdutos",
-		        dataType:'json',
-		        type: "GET",
-		        success: function(data){
-		        	$('#tabela').empty();
-					for (var i = 0, len = data.length; i < len; i++) {
-						if(data[i].ativo){
-				        	$('#tabela').append('<tr id='+data[i].id_produto+'> <td>'+data[i].nome+'</td> <td>'+data[i].fabrica.nome+' </td> <td><span class="label label-success">Active</span></td><td> <a class="btn btn-info" href="#" onclick="openCar()"><i class="icon-edit "></i></a> <a  objectId='+data[i].id_produto+' class="btn btn-danger delete" ><i class="icon-trash "></i> </a></td></tr>');
-				    	}
-				    }
-					    $("#tab").show();
-						$(".loader").hide();
-			        },
-			        error: function(data){
-					 	console.log(data);
-			        }
-
-		    });
-	});
-			
-	</script>
 
 </head>
 	
-		<!--
-	<!-- start: Header -->
 	
 	<body>
 		
@@ -175,51 +150,43 @@
 
 	</script>
 
+	
+		
+		
+
 	<!-- start: JavaScript-->
 
-	<script src="js/jquery-migrate-1.2.1.min.js"></script>	
-		<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-
-
-		<script src="js/jquery.ui.touch-punch.js"></script>	
-		<script src="js/modernizr.js"></script>	
-		<script src="js/bootstrap.min.js"></script>	
-		<script src="js/jquery.cookie.js"></script>	
-		<script src='js/fullcalendar.min.js'></script>	
-		<script src='js/jquery.dataTables.min.js'></script>
-		<script src="js/excanvas.js"></script>
-	<script src="js/jquery.flot.js"></script>
-	<script src="js/jquery.flot.pie.js"></script>
-	<script src="js/jquery.flot.stack.js"></script>
-	<script src="js/jquery.flot.resize.min.js"></script>
-	<script src="js/jquery.flot.time.js"></script>
-		
-		<script src="js/jquery.chosen.min.js"></script>	
-		<script src="js/jquery.uniform.min.js"></script>		
-		<script src="js/jquery.cleditor.min.js"></script>	
-		<script src="js/jquery.noty.js"></script>	
-		<script src="js/jquery.elfinder.min.js"></script>	
-		<script src="js/jquery.raty.min.js"></script>	
-		<script src="js/jquery.iphone.toggle.js"></script>	
-		<script src="js/jquery.uploadify-3.1.min.js"></script>	
-		<script src="js/jquery.gritter.min.js"></script>	
-		<script src="js/jquery.imagesloaded.js"></script>	
-		<script src="js/jquery.masonry.min.js"></script>	
-		<script src="js/jquery.knob.modified.js"></script>	
-		<script src="js/jquery.sparkline.min.js"></script>	
-		<script src="js/counter.min.js"></script>	
-		<script src="js/raphael.2.1.0.min.js"></script>
 	
+			<script>
+				$(document).ready(function (){
+					$.ajax({
+							url: "../controllers/cadastros.php",
+					        context: document.body,
+					        data: "action=getAllProdutos",
+					        dataType:'json',
+					        type: "GET",
+					        success: function(data){
+					        	$('#tabela').empty();
+								for (var i = 0, len = data.length; i < len; i++) {
+									if(data[i].ativo){
+							        	$('#tabela').append('<tr id='+data[i].id_produto+'> <td>'+data[i].nome+'</td> <td>'+data[i].fabrica.nome+' </td> <td><span class="label label-success">Active</span></td><td> <a class="btn btn-info" href="#" onclick="openCar()"><i class="icon-edit "></i></a> <a  objectId='+data[i].id_produto+' class="btn btn-danger delete" ><i class="icon-trash "></i> </a></td></tr>');
+							    	}
+							    }
+								    $("#tab").show();
+									$(".loader").hide();
+									 
+									var table = $("#tabela").datatable();
+									
 
-	<script src="js/justgage.1.0.1.min.js"></script>	
-		<script src="js/jquery.autosize.min.js"></script>	
-		<script src="js/retina.js"></script>
-		<script src="js/jquery.placeholder.min.js"></script>
-		<script src="js/wizard.min.js"></script>
-		<script src="js/core.min.js"></script>	
-		<script src="js/charts.min.js"></script>	
-		<script src="js/custom.js"></script>
-	<!-- end: JavaScript-->
-	
+						        },
+						        error: function(data){
+								 	console.log(data);
+						        }
+
+					    });
+				});
+			
+			</script>
+
 
 </html>

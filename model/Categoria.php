@@ -19,11 +19,11 @@
 		}
 		
 		public function setSupercategoria($valor){
-			$this->supercategoria=$valor;
+			$this->superCategoria=$valor;
 		}
 
 		public function getSuperCategoria(){
-			return $this->supercategoria;
+			return $this->superCategoria;
 		}
 
 		public function getId(){
