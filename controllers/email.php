@@ -1,6 +1,7 @@
 <?php
 header('Content-type:application/json');
 
+
 	if(isset($_GET['action']) && ($_GET['action'] == 'email_sender')) {
 		$target = $_GET['email'];
 		$table_content = $_GET['content'];

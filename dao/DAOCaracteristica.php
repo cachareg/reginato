@@ -64,7 +64,7 @@
         $connection = mysqli_connect("localhost", "root", "", "reginato");
         $sql= "select * FROM foto_caracteristica WHERE id_caracteristica=".$id;
         $fotos[]=array();
-        $url="http://localhost:82/site-reginato-representacao/reginato/fotos/caracteristicas/";
+        $url="../fotos/caracteristicas/";
         $result=mysqli_query( $connection, $sql);
         $foto;
         while ($row = mysqli_fetch_object($result)) {
