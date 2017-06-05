@@ -14,8 +14,7 @@
 <link href="css/style.min.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="css/style-responsive.min.css" rel="stylesheet">
-<link href="css/retina.css" rel="stylesheet">
+
 <link rel="stylesheet" href="dist/build.min.css">
 <link rel="stylesheet" href="css/fastselect.min.css">
 
@@ -154,130 +153,119 @@
 		}
 	</script>
 </head>
-<body>
-	<div class="row-fluid" id="content" height="400"  >		
-		<div class="box span12" height="400" >
-			<div class="box-header" data-original-title >
-				<h2><i class="icon-user"></i><span class="break"></span>Novo</h2>
-			</div>
 
-			<div class="box-content" height="400">		
-				<form class="form-horizontal" height="400">
+	
+				<form class="form-horizontal" scroll="no" >
 					<div class="loader" id="ext_loader"></div>
 					<fieldset id="campos" style="display:none">
-					<div class="control-group">
-						
-						<div class="controls">
-							<label> Nome</label>
-							<input input class="input-xlarge focused" id="nome" type="text" value=""></input>
+						<div class="control-group">
 							
+							<div class="controls">
+								<label> Nome</label>
+								<input input class="input-xlarge focused" id="nome" type="text" value=""></input>
+								
+							</div>
 						</div>
-					</div>
-
-					<div class="control-group">
-						<div class="controls">
-							<label>Fábrica</label>
-							<select class="singleSelectGrouped" id="fabrica_select" name="language">
-			                    
-		           			</select>
+						<div class="control-group">
+							<div class="controls">
+								<label>Fábrica</label>
+								<select class="singleSelectGrouped" id="fabrica_select" name="language">
+				                    
+			           			</select>
+							</div>
 						</div>
-					</div>
-					<div class="control-group">
-							  <div class="controls">
-								  <label class="checkbox inline">
-									<input type="checkbox" id="inlineCheckbox2" class="lanc" value="option5"> Lançamento</input>
-								  </label>
-								  <label class="checkbox inline">
-									<input type="checkbox" id="inlineCheckbox2" class="ativo" checked selected="true" value="option5"> Ativo</input>
-								  </label>
-								</div>	
-								</div>
-					<div class="control-group">
-						<div class="controls" id="cat_controls">
-							<label>Categoria</label>
-							<select class="singleSelectGrouped" id="categorias_select" name="language">
-			                    
-		           			</select>
-		           			<button class="btn" style="height:46px;" onclick="addRowCat()" type="button">OK</button>
-		           			<label>Subcategoria</label>
-							<select class="singleSelectGrouped" id="subcategorias_select" name="language">
-			                    
-		           			</select>
-		           			<button class="btn" style="height:46px;" onclick="addRowSub()" type="button">OK</button>
-		           			<div  class="row-fluid" id="tabela" style="  float:inherit; marging-top:20px; padding-top:20px; display: none">
-									<div class="box span6">
-										<div class="box-header">
-											<h2><i class="icon-align-justify"></i><span class="break"></span>Categorias e Subcategorias</h2>
-										</div>
-										<div class="box-content" >
-											<table class="table" id="tabela_categorias">
-											  <thead>
-												  <tr>
-													  <th>Categorias e Subcategorias</th>
-													  <th>Excluir</th>
-													                                    
-												  </tr>
-											  </thead>   
-										
-											</table>  
-										</div>     
+						<div class="control-group">
+								  <div class="controls">
+									  <label class="checkbox inline">
+										<input type="checkbox" id="inlineCheckbox2" class="lanc" value="option5"> Lançamento</input>
+									  </label>
+									  <label class="checkbox inline">
+										<input type="checkbox" id="inlineCheckbox2" class="ativo" checked selected="true" value="option5"> Ativo</input>
+									  </label>
+									</div>	
 									</div>
-						</div>
-						</div>
-						
-					</div>
-					<div class="control-group">
-						<div class="controls" id="car_controls">
-							<label>Característica</label>
-							<select class="singleSelectGrouped" id="caracteristica_select" name="language">
-			                    
-		           			</select>
-		           			<button class="btn" style="height:46px;" onclick="addRowCar()" type="button">OK</button>
-		           			<div  class="row-fluid" id="tabela2" style="  float:inherit; marging-top:20px; padding-top:20px; display: none">
+						<div class="control-group">
+							<div class="controls" id="cat_controls">
+								<label>Categoria</label>
+								<select class="singleSelectGrouped" id="categorias_select" name="language">
+				                    
+			           			</select>
+			           			<button class="btn" style="height:46px;" onclick="addRowCat()" type="button">OK</button>
+			           			<label>Subcategoria</label>
+								<select class="singleSelectGrouped" id="subcategorias_select" name="language">
+				                    
+			           			</select>
+			           			<button class="btn" style="height:46px;" onclick="addRowSub()" type="button">OK</button>
+			           			<div  class="row-fluid" id="tabela" style="  float:inherit; marging-top:20px; padding-top:20px; display: none">
 										<div class="box span6">
 											<div class="box-header">
-												<h2><i class="icon-align-justify"></i><span class="break"></span>Características</h2>
+												<h2><i class="icon-align-justify"></i><span class="break"></span>Categorias e Subcategorias</h2>
 											</div>
-										<div class="box-content" >
-											<table class="table" id="tabela_caracteristicas">
+											<div class="box-content" >
+												<table class="table" id="tabela_categorias">
 												  <thead>
 													  <tr>
-														  <th>Característica</th>
+														  <th>Categorias e Subcategorias</th>
 														  <th>Excluir</th>
-														  <th>Valores</th>                                      
+														                                    
 													  </tr>
 												  </thead>   
-												  <tbody>
-													                         
-												  </tbody>
-											</table>  
-										</div>     
-									</div>
+											
+												</table>  
+											</div>     
+										</div>
+							</div>
 						</div>
-					</div>
-					<div class="control-group">
-						
-						<div class="controls" >
-								<label >Adicionar Fotos </label>
-								<input type="file" id="arquivos" text="ok" onchange="loadname(this,'previewimg')" name="files" webkitdirectory directory multiple />
+						<div class="control-group">
+							<div class="controls" id="car_controls">
+								<label>Característica</label>
+								<select class="singleSelectGrouped" id="caracteristica_select" name="language">
+				                    
+			           			</select>
+			           			<button class="btn" style="height:46px;" onclick="addRowCar()" type="button">OK</button>
+			           			<div  class="row-fluid" id="tabela2" style="  float:inherit; marging-top:20px; padding-top:20px; display: none">
+											<div class="box span6">
+												<div class="box-header">
+													<h2><i class="icon-align-justify"></i><span class="break"></span>Características</h2>
+												</div>
+											<div class="box-content" >
+												<table class="table" id="tabela_caracteristicas">
+													  <thead>
+														  <tr>
+															  <th>Característica</th>
+															  <th>Excluir</th>
+															  <th>Valores</th>                                      
+														  </tr>
+													  </thead>   
+													  <tbody>
+														                         
+													  </tbody>
+												</table>  
+											</div>     
+										</div>
+							</div>
 						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-						<table class="fotos" width="600" style="display:inline">
+						<div class="control-group">
+							
+							<div class="controls" >
+									<label >Adicionar Fotos </label>
+									<input type="file" id="arquivos" text="ok" onchange="loadname(this,'previewimg')" name="files" webkitdirectory directory multiple />
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+							<table class="fotos" width="600" style="display:inline">
 
-						</table>
-						<div id="trashFotos"  style="display:none"><a class="btn btn-danger" id="exclude" height="40" width="40"><i class="icon-trash " height="40" width="40"></i> </a> 
-					</div>
-					<div id="actions" style="clear: left; float: left; position: relative; left: 80%; ">
-									<button id="salvar" type="button"  class="btn btn-primary">Salvar</button>
-									<button type="reset" class="btn">Limpar</button>
-								</div>
-				</fieldset>
+							</table>
+							<div id="trashFotos"  style="display:none"><a class="btn btn-danger" id="exclude" height="40" width="40"><i class="icon-trash " height="40" width="40"></i> </a> 
+						</div>
+						<div id="actions" style="clear: left; float: left; position: relative; left: 80%; ">
+										<button id="salvar" type="button"  class="btn btn-primary">Salvar</button>
+										<button type="reset" class="btn">Limpar</button>
+						</div>
+					</fieldset>
 				</form>
-			</div>
-		</div>
-	</div>
+
 					
     <script>
 
@@ -494,7 +482,7 @@
 						}
 					}else{
 
-						if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).attr('id') == sub_cat[$("#subcategorias_select :selected").val()]){
+						if($($($("#tabela_categorias").find("thead")[0]).find("tr")[i]).attr('id') == cat_sub[$("#subcategorias_select :selected").val()]){
 							console.log("e2");
 							jaTemSup=true;
 						}
@@ -503,10 +491,9 @@
      			if(!jaTemSub){
      				var row = $('<tr id="'+$("#subcategorias_select :selected").val()+'"> <td>'+$("#subcategorias_select :selected").text()+'</td> <td><a onclick="excluirSub('+$("#subcategorias_select :selected").val()+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
      				row.addClass("sub");
-     				console.log("what?");
      				$('#tabela_categorias tr:last').after(row);
      				if(!jaTemSup){
-     					//console.log(categorias);
+     					console.log("ahan");
      					
      					row = $('<tr id="'+cat_sub[$("#subcategorias_select :selected").val()]+'"> <td>'+ categorias[cat_sub[$("#subcategorias_select :selected").val()]]+'</td> <td><a onclick="excluirCat('+cat_sub[$("#subcategorias_select :selected").val()]+')" class="btn btn-danger" ><i class="icon-trash "></i> </a> </td></tr>');
      					$('#tabela_categorias tr:last').after(row);

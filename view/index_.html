@@ -4,8 +4,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>SimpliQ - Flat & Responsive Bootstrap Admin Template</title>
-	<meta name="description" content="SimpliQ - Flat & Responsive Bootstrap Admin Template.">
+	<title></title>
 	<meta name="author" content="Łukasz Holeczek">
 	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<!-- end: Meta -->
@@ -39,7 +38,7 @@
 					<h2><i class="icon-hand-up"></i>Painel de Controle</h2>
 				</div>
 				<div class="box-content">
-					<a href="javascript:openCad('cadastros', 'cadastro_produto.php')" class="quick-button span2">
+					<a href="javascript:openCad('cadastros', 'cadastro_produto2.php')" class="quick-button span2">
 					<i class="icon-barcode"></i>
 					<p>Produto</p>
 					</a>
@@ -57,22 +56,24 @@
 					</a>
 					<div class="clearfix"></div>
 				</div>	
+				<object  id="cadastros"  type="text/html" ></object>	
 			</div>
-		</div><!--/span-->				
+
+		</div><!--/span-->		
+
 	</div><!--/row-->
 
-	<object  id="cadastros"  type="text/html" ></object>
+	
 	
 </body>
 	<script>
 
 		function openCad(id, url) {
-			console.log("Im here")
        		var x=document.getElementById('cadastros');
 	       		
 	       		x.setAttribute('data', url);
-	       		x.setAttribute('width', "100%");
-	       		x.setAttribute('height', window.innerHeight * 0.7);
+	       		x.setAttribute('width', window.innerWidth * 2.2);
+	       		x.setAttribute('height', window.innerHeight * 0.9);
 
 
      	}

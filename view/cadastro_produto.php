@@ -145,18 +145,7 @@
 
 		    });
 		});;
-		
-
-
 	</script>
-
-	
-		
-		
-
-	<!-- start: JavaScript-->
-
-	
 			<script>
 				$(document).ready(function (){
 					$.ajax({
@@ -175,9 +164,7 @@
 								    $("#tab").show();
 									$(".loader").hide();
 									 
-									var table = $("#tabela").datatable();
-									
-
+										
 						        },
 						        error: function(data){
 								 	console.log(data);

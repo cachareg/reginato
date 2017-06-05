@@ -37,10 +37,12 @@
 				$fabrica = new Fabrica();
 				$fabrica->setId($row->id);
 				$fabrica->setNome($row->nome);
+				$fabrica->setAtivo(true);
 				
 				array_unshift($fabricas, $fabrica);
 			}
 			//var_dump($caracteristicas);
+
 			return $fabricas;
 			
 		}

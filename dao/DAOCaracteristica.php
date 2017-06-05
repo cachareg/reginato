@@ -4,6 +4,30 @@
 
 	Class DAOCaracteristica{
 
+        public function inserirCaracteristica($car){
+            $connection = mysqli_connect("localhost", "root", "", "reginato");
+            $sql="insert into caracteristica (nome, valoresSelecionadosPorFoto) values('".$car->getNome()."',".$car->isValoresSelecionadosPorFoto().")";
+            //echo $sql;
+            mysqli_query($connection, $sql);
+            $id = mysqli_insert_id($connection);
+            mysqli_close($connection); 
+            return $id;
+
+        }
+
+
+
+        public function inserirFotosCaracteristica($c){
+            $connection = mysqli_connect("localhost", "root", "", "reginato");
+            $fotos = $c->getFotos();
+            foreach ($fotos as $current) {
+                $sql= "insert into foto_caracteristica (id_caracteristica, nome, hint) values(".$c->getId().", '".$current->getNome()."', '".$current->getHint()."')";
+                echo $sql;
+                mysqli_query($connection, $sql);
+            }
+            mysqli_close($connection);
+        }
+
 		public function getCaracteristicasPorProduto($id){
 
 			$connection = mysql_connect("localhost", "root", "");

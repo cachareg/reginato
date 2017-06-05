@@ -16,6 +16,12 @@ if(isset($_GET['action'])) {
       echo json_encode(DAOCaracteristica::utf8_code_deep($categorias));    
     }
 
+    if($_GET['action'] == 'getAllFabricas') {
+      $dao = new DAOFabrica();
+      $fabricas = $dao->getAllFabricas();
+      echo json_encode($fabricas);    
+    }
+
 
     if($_GET['action'] == 'getAllProdutos') {
 	    $dao = new DAOProduto();
@@ -69,6 +75,40 @@ if(isset($_GET['action'])) {
 }
 
 if(isset($_POST['action'])) {
+  if($_POST['action'] == 'inserirCaracteristica') {
+      $log = true;
+      $rett = "";
+      $cont=0;
+      $c= new Caracteristica();
+      $c->setValoresSelecionadosPorFoto($_POST['porFoto']);
+      $c->setNome($_POST['nome']);
+      $dao = new DAOCaracteristica();
+      $c->setId($id = $dao->inserirCaracteristica($c));
+      if($_POST['porFoto']){
+          mkdir("../fotos/caracteristicas/".$id."/");
+          $target_dir = "../fotos/caracteristicas/".$id."/";
+          while($log){
+            if(isset($_FILES[$cont])){
+              $target_file = $target_dir . basename($_FILES[$cont]["name"]);
+              $foto = new FotoCaracteristica();
+              $foto->setNome(basename($_FILES[$cont]["name"]));
+              $c->addFoto($foto);
+
+              if (move_uploaded_file($_FILES[$cont]["tmp_name"], $target_file)) {
+                  $rett = $rett.$target_file;
+              }else{
+              }
+              $cont++;
+            }else{
+              $log=False;
+            }
+          }
+        $dao->inserirFotosCaracteristica($c);
+      }
+  }
+}
+
+if(isset($_POST['action'])) {
   if($_POST['action'] == 'inserirFabrica') {
     $fabrica = new Fabrica();
     $fabrica->setNome($_POST['nome']);
@@ -77,15 +117,20 @@ if(isset($_POST['action'])) {
   }
 
   if($_POST['action'] == 'removerProduto') {
+    
     $id = $_POST['id'];
     $dao = new DAOProduto();
     $dao->removerProduto($id);
     $dir= "../fotos/produtos/".$id;
-    $files = array_diff(scandir($dir), array('.','..')); 
-    foreach ($files as $file) { 
-      (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
-    } 
-    rmdir($dir); 
+    
+    if(is_dir($dir)){
+        $files = array_diff(scandir($dir), array('.','..')); 
+        foreach ($files as $file) { 
+          (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
+        } 
+        rmdir($dir); 
+    }
+    echo $_POST['id'];
   }
 
   if($_POST['action'] == 'inserirCategoria') {
