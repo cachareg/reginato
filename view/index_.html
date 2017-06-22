@@ -29,6 +29,26 @@
 	<script src="js/jquery-1.10.2.min.js"></script> 
 </head>
 
+
+<script>
+	$.ajax({
+	url: "../controllers/cadastros.php",
+    data: {action:"session", session:localStorage.getItem("login")}, 
+    dataType:'json',
+    type: "GET",
+    success: function(data){
+    	console.log("funfou");
+    	console.log(data);
+    },	
+	error: function(data){
+	 	console.log(data);
+    }, 
+    cache: false,
+    contentType: false,
+    processData: false
+   });
+</script>
+
 <body >
 	
 	<div class="navbar" >
@@ -38,7 +58,7 @@
 					<h2><i class="icon-hand-up"></i>Painel de Controle</h2>
 				</div>
 				<div class="box-content">
-					<a href="javascript:openCad('cadastros', 'cadastro_produto2.php')" class="quick-button span2">
+					<a href="javascript:openCad('cadastros', 'cadastro_produto.php')" class="quick-button span2">
 					<i class="icon-barcode"></i>
 					<p>Produto</p>
 					</a>
@@ -46,7 +66,7 @@
 						<i class="icon-hospital"></i>
 						<p>Fábrica</p>
 					</a>
-					<a class="quick-button span2">
+					<a href="javascript:openCad('cadastros', 'cadastro_categoria.html')" class="quick-button span2">
 						<i class="icon-reorder"></i>
 						<p>Categoria</p>
 					</a>
@@ -69,11 +89,10 @@
 	<script>
 
 		function openCad(id, url) {
-       		var x=document.getElementById('cadastros');
-	       		
-	       		x.setAttribute('data', url);
-	       		x.setAttribute('width', window.innerWidth * 2.2);
-	       		x.setAttribute('height', window.innerHeight * 0.9);
+       		var x=document.getElementById('cadastros');	
+       		x.setAttribute('data', url);
+       		x.setAttribute('width', window.innerWidth * 2.2);
+       		x.setAttribute('height', window.innerHeight * 0.9);
 
 
      	}

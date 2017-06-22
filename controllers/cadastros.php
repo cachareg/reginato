@@ -10,6 +10,10 @@ require_once("../model/FotoCaracteristica.php");
 
 if(isset($_GET['action'])) {
 
+    if($_GET['action'] == 'session'){
+      echo 1;
+    }
+
     if($_GET['action'] == 'getAllCategories'){
       $dao = new DAOCategoria();
       $categorias = $dao->getAllCategorias();
@@ -75,6 +79,21 @@ if(isset($_GET['action'])) {
 }
 
 if(isset($_POST['action'])) {
+
+  if($_POST['action'] == 'login') {
+
+    if((json_decode($_POST['usuario'])=="arthur") && (json_decode($_POST['pass'])=="arthur123")){
+      session_start();
+      
+      $valor=rand();
+      $_SESSION['login'] = $valor;
+      echo $valor;
+    }else{
+      echo -1;
+    }
+    //echo json_encode("ok");
+  }
+
   if($_POST['action'] == 'inserirCaracteristica') {
       $log = true;
       $rett = "";
@@ -114,6 +133,7 @@ if(isset($_POST['action'])) {
     $fabrica->setNome($_POST['nome']);
     $daoF = new DaoFabrica();
     $daoF->inserirFabrica($fabrica);
+    echo 1;
   }
 
   if($_POST['action'] == 'removerProduto') {

@@ -1,4 +1,4 @@
-
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js">$.noConflict();</script>
 
 	 <style>
 	 	.loader2 {
@@ -24,6 +24,8 @@
 			  0% { transform: rotate(0deg); }
 			  100% { transform: rotate(360deg); }
 			}
+
+		
 	 </style>
 
 						<form class="form" >
@@ -33,54 +35,45 @@
 								<div class="control-group">
 									<label class="control-label" for="focusedInput">Nome: </label>
 									<div class="controls">
-								  		<input class="input-xlarge focused" id="nome" type="text" value="">
+								  		<input class="input-xlarge focused nome" id="nome" type="text" value="">
 									</div>
 								</div>		
 	
 								<div id="actions" style="clear: left; float: left; position: relative; left: 80%; ">
-									<button id="salvar" type="button"  class="btn btn-primary">Salvar</button>
+									<button id="salvarF" type="button"  class="btn btn-primary">Salvar</button>
 									<button type="reset" class="btn">Limpar</button>
 								</div>
 								
 							</fieldset>
 						</form>
-				
-	
-
-<!-- start: JavaScript-->
-	
 		<script>
-		$("#salvar").click(function(event){
-			if($("#nome").val()==""){
-				
-	            return;
-			}else{
-				$("#content").append("<div class='loader2'> </div>");
+		$("#salvarF").click(function(event){
+				alert("doidera");
 				var formData = new FormData();
-				formData.append("nome", $("#nome").val());
-				formData.append("action","inserirFabrica");
-				$("#content").append("<div class='loader2'> </div>");
-			    $( "#content" ).css("opacity", "0.5");
+				formData.append("action", "inserirFabrica");
+				formData.append("nome", $(".nome").val());
 				$.ajax({
-					url: "../controllers/cadastros.php",
-					type: "POST",
-					data: formData,
-			        dataType:'json',
-			        
-			        	success: function(data){
-			        		
-			        	},
-			        	error: function(data){
-						 	console.log(data);
-				        },
-				        cache: false,
-			            contentType: false,
-		            	processData: false
-			    });
-			}
+				 	url: "../controllers/cadastros.php",
+		             type: 'POST',
+		             data: formData, 
+		             dataType: 'json',
+		             success: function (data) {
+		             	console.log("deu");
+		             	console.log(data);  	
+	             	},
+	             	error: function (data) {
+	             		
+	             		console.log(datas);
+	                
+	             	},
+
+		             cache: false,
+		             contentType: false,
+	            	processData: false
+		     	});	
+			
 		});
 		</script>
-		
 
 	
 </body>
