@@ -11,9 +11,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-	<script src="js/jquery-1.10.2.min.js"></script> 
+
 	<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.min.js"></script> 
 	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script> 
+	<style>s
 
 	<style>
 	.loader {
@@ -131,7 +133,7 @@
 		$('body').on('click', ".edit", function(event){
 			console.log("kjsdh");
 			$("#conteudo").attr("idid", $(this).attr("objectid"));
-			$("#conteudo").load("inserir_fabrica.html");
+			$("#conteudo").load("inserir_produto.html");
 
 		});
 
@@ -163,9 +165,12 @@
 
 
 	</script>
+	
+			
 			<script>
                 $(document).ready(function (){
-                    $.ajax({
+
+                	 $.ajax({
                             url: "../controllers/cadastros.php",
                             context: document.body,
                             data: "action=getAllFabricas",
@@ -174,8 +179,7 @@
                             success: function(data){
                                 var table = $('#example').DataTable();
                                 console.log($(data).length);
-                                console.log("dfs");
-                                 for (var i = 0, len = data.length; i < len; i++) {
+                                for (var i = 0, len = data.length; i < len; i++) {
                                     if(data[i].ativo){
                                     	console.log(data[i]);
                                          table.row.add( [

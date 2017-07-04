@@ -31,22 +31,22 @@
 
 
 <script>
-	$.ajax({
-	url: "../controllers/cadastros.php",
-    data: {action:"session", session:localStorage.getItem("login")}, 
-    dataType:'json',
-    type: "GET",
-    success: function(data){
-    	console.log("funfou");
-    	console.log(data);
-    },	
-	error: function(data){
-	 	console.log(data);
-    }, 
-    cache: false,
-    contentType: false,
-    processData: false
-   });
+	// $.ajax({
+	// url: "../controllers/cadastros.php",
+ //    data: {action:"session", session:localStorage.getItem("login")}, 
+ //    dataType:'json',
+ //    type: "GET",
+ //    success: function(data){
+ //    	console.log("funfou");
+ //    	console.log(data);
+ //    },	
+	// error: function(data){
+	//  	console.log(data);
+ //    }, 
+ //    cache: false,
+ //    contentType: false,
+ //    processData: false
+ //   });
 </script>
 
 <body >
@@ -89,6 +89,7 @@
 	<script>
 
 		function openCad(id, url) {
+			console.log(url);
        		var x=document.getElementById('cadastros');	
        		x.setAttribute('data', url);
        		x.setAttribute('width', window.innerWidth * 2.2);
