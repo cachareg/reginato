@@ -20,6 +20,12 @@ if(isset($_GET['action'])) {
       echo json_encode(DAOCaracteristica::utf8_code_deep($categorias));    
     }
 
+    if($_GET['action'] == 'getAllCaracteristicas'){
+      $dao = new DAOCaracteristica();
+      $c = $dao->getAllCaracteristicas();
+      echo json_encode(DAOCaracteristica::utf8_code_deep($c));    
+    }
+
     if($_GET['action'] == 'getAllFabricas') {
       $dao = new DAOFabrica();
       $fabricas = $dao->getAllFabricas();
@@ -32,6 +38,14 @@ if(isset($_GET['action'])) {
 	    $produtos = $dao->getAllProdutos(null, null);
 		  echo json_encode($produtos);
     }
+
+    if($_GET['action'] == 'getProdutoById') {
+      $dao = new DAOProduto();
+      $produto = $dao->getProdutoById(intval(json_decode($_GET['id'])));
+      //secho ;
+      echo json_encode($produto);
+    }
+
     if($_GET['action'] == 'getCaracteristicasProduto') {
       $id_produto= intval(json_decode($_GET['id']));
       $dao = new DAOProduto();
@@ -125,6 +139,7 @@ if(isset($_POST['action'])) {
         $dao->inserirFotosCaracteristica($c);
       }
   }
+  echo 1;
 }
 
 if(isset($_POST['action'])) {

@@ -129,6 +129,11 @@
 			return $product;    	
         }	
 
+        public function getProdutoById($id){
+        	$produto = $this->getCaracteristicasProduto($id);
+        	return $produto;
+        }
+
 
 		public function getAllProdutos(){
 			

@@ -11,7 +11,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-
 	<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
 	<script src="js/jquery-1.10.2.min.js"></script> 
 	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script> 
@@ -137,9 +136,23 @@
 		}
 
 		$('body').on('click', ".edit", function(event){
-			console.log("kjsdh");
-			$("#conteudo").attr("idid", $(this).attr("objectid"));
-			$("#conteudo").load("inserir_produto.html");
+			
+			$.ajax({
+            url: "../controllers/cadastros.php",
+            context: document.body,
+            data: {action:"getProdutoById", id:$(this).attr("objectId")},
+            dataType:'json',
+            type: "GET",
+            success: function(data){
+               		localStorage.setItem("produto", data);
+               		$("#conteudo").load("inserir_produto.html");
+               	},
+                error: function(data){
+                    console.log(data);
+                }
+             });
+			//localStorage.setItem("nome", "cassio");
+			//$("#conteudo").load("inserir_produto.html");
 
 		});
 
@@ -173,8 +186,6 @@
 
 
 	</script>
-	
-			
 			<script>
                 $(document).ready(function (){
                     $.ajax({

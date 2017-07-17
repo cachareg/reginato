@@ -22,7 +22,7 @@
             $fotos = $c->getFotos();
             foreach ($fotos as $current) {
                 $sql= "insert into foto_caracteristica (id_caracteristica, nome, hint) values(".$c->getId().", '".$current->getNome()."', '".$current->getHint()."')";
-                echo $sql;
+                //echo $sql;
                 mysqli_query($connection, $sql);
             }
             mysqli_close($connection);

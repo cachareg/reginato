@@ -1,30 +1,5 @@
-<html>
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-	<meta name="author" content="Łukasz Holeczek">
-	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<meta name="description" content="SimpliQ - Flat & Responsive Bootstrap Admin Template.">
-	<meta name="author" content="Łukasz Holeczek">
-	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- end: Meta -->
 
-<meta charset="utf-8">
-<link href="css/style.min.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="dist/build.min.css">
-<link rel="stylesheet" href="css/fastselect.min.css">
-
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.12.4.min.js">$.noConflict();</script>
-<script src="dist/build.min.js">$.noConflict();</script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">$.noConflict();</script>
-<link rel="canonical" href="https://github.com/dbrekalo/fastselect/"/>
-
-        <script src="js/fastselect.standalone.js"></script>
 
         <style>
         .selecionada{
@@ -153,8 +128,6 @@
 		}
 	</script>
 </head>
-
-	
 				<form class="form-horizontal" scroll="no" >
 					<div class="loader" id="ext_loader"></div>
 					<fieldset id="campos" style="display:none">
@@ -507,7 +480,15 @@
     var cat_sub=[];
  
     $( document ).ready(function() {
+    	alert("dfasdfds");
+    	if (localStorage.getItem('nome')) {
+		   alert("meu piru");
+		}else{
+		   alert("meu piruzao");
+		}
 		$.ajax({
+
+				
 				url: "../controllers/cadastros.php",
 		        context: document.body,
 		        data: "action=getAllCaracteristicasCategoriasFabricas",
@@ -515,6 +496,7 @@
 		        type: "GET",
 		        	success: function(data){
 		        		//console.log(data["categorias"]);
+
 		        		for (var i = 0, len = data["categorias"].length; i < len; i++) {
 		        			
 		        			if(data["categorias"][i].nome!=""){
@@ -617,39 +599,7 @@
 			
 		}  
         </script>
-		<script src="js/jquery-migrate-1.2.1.min.js"></script>	
-		<script src="js/jquery.ui.touch-punch.js"></script>	
-		<script src="js/modernizr.js"></script>	
-		<script src="js/bootstrap.min.js"></script>	
-		<script src="js/jquery.cookie.js"></script>	
-		<script src='js/fullcalendar.min.js'></script>	
-		<script src='js/jquery.dataTables.min.js'></script>
-		<script src="js/excanvas.js"></script>
-		<script src="js/jquery.flot.js"></script>
-		<script src="js/jquery.flot.pie.js"></script>
-		<script src="js/jquery.flot.stack.js"></script>
-		<script src="js/jquery.flot.resize.min.js"></script>
-		<script src="js/jquery.flot.time.js"></script>	
-		<script src="js/jquery.uniform.min.js"></script>		
-		<script src="js/jquery.cleditor.min.js"></script>	
-		<script src="js/jquery.noty.js"></script>	
-		<script src="js/jquery.elfinder.min.js"></script>	
-		<script src="js/jquery.raty.min.js"></script>	
-		<script src="js/jquery.iphone.toggle.js"></script>	
-		<script src="js/jquery.uploadify-3.1.min.js"></script>	
-		<script src="js/jquery.gritter.min.js"></script>	
-		<script src="js/jquery.imagesloaded.js"></script>	
-		<script src="js/jquery.masonry.min.js"></script>	
-		<script src="js/jquery.knob.modified.js"></script>	
-		<script src="js/jquery.sparkline.min.js"></script>	
-		<script src="js/counter.min.js"></script>	
-		<script src="js/raphael.2.1.0.min.js"></script>
-		<script src="js/justgage.1.0.1.min.js"></script>	
-		<script src="js/jquery.autosize.min.js"></script>	
-		<script src="js/retina.js"></script>
-		<script src="js/jquery.placeholder.min.js"></script>
-		<script src="js/wizard.min.js"></script>
-		<script src="js/charts.min.js"></script>	
+		
 		 <script>
 		 	var valoresCarComuns = [];
 		 	function salvarSelecionadas(){
@@ -785,7 +735,6 @@
 		            data:  formData,
 		            dataType: 'json',
 		            success: function (data) {
-		            	console.log(data);
 		            	$("#dialog2" ).empty();
 		            	$("#dialog2").append("<p style='text-align: center; font-size:15' >produto inserido com sucesso</p>")
 	                	$("#dialog2" ).dialog( "open" );

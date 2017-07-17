@@ -1,4 +1,4 @@
-
+<script src="js/jquery-1.10.2.min.js"></script> 
 	<script>
 	$( function() {
 	$( "#dialog2" ).dialog();
@@ -7,8 +7,6 @@
 
 	 <style>
 	 
-
-
 	 	.loader2 {
 			  border: 16px solid #f3f3f3;
 			  border-radius: 50%;
@@ -34,13 +32,10 @@
 			}
 	 </style>
 
-
-
-
 						<form id="form">
 
 
-							<label class="control-label" for="focusedInput">Nome: </label>
+							<label for="focusedInput">Nome: </label>
 							<div class="controls">
 						  		<input class="input-xlarge focused" id="nome" type="text" value="">
 							</div>
@@ -57,7 +52,7 @@
 								<div class="row-fluid">
 									<div class="box span4" onTablet="span6" onDesktop="span4">
 										<div class="box-header">
-											<h2>Subcategorias</h2>
+											Subcategorias
 											<div class="box-icon">
 												
 											</div>
@@ -77,9 +72,10 @@
 							</div>
 							</div>
 							</fieldset>
+							<div id="dialog2" style="display:none; overflow:hidden" >
 						</form>
 				
-	<div id="dialog2" style="display:none; overflow:hidden" >
+	
 
 
 	</script>
@@ -129,7 +125,7 @@
 		}
 
 		$("#reset").click(function(event){
-			$("#subcategorias").remove();
+			$(".dashboard-list").empty();
 			console.log("aham");
 		});
 
@@ -159,14 +155,15 @@
 			        dataType:'json',
 			        
 			        	success: function(data){
-			        		$("#dialog2" ).empty();
-			            	$("#dialog2").append("<p style='text-align: center; font-size:15' >categoria inserida com sucesso</p>")
-		                	$("#dialog2" ).dialog( "open" );
+			        		//$("#dialog2" ).empty();
+			            	//$("#dialog2").append("<p style='text-align: center; font-size:15' >categoria inserida com sucesso</p>")
+		                	//$("#dialog2" ).dialog( "open" );
 		                	$(".loader2").hide();
 		                	$("#content").css("opacity", "1");
 		                	$("#nome").val("");
 		                	$("#subcategoria").val("");
 		                	$("#subcategorias li").remove();
+		                	alert("categoria inserida");
 
 			        	},
 			        	error: function(data){
